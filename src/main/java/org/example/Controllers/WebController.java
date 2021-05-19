@@ -30,4 +30,8 @@ public class WebController {
         return "basket";
     }
 
+    @GetMapping("/sign_up")
+    public String signUpPage() {
+        return "sign_up_form";
+    }
 }

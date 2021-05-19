@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -19,20 +20,40 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private RoleRepo roleRepo;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @Override
-    public void save(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+    public String save(User user) {
         Set<Role> roles = new HashSet<>();
-        roles.add(roleRepo.findByRole("buyer"));
-        user.setRoles(roles);
-        userRepo.save(user);
+        Set<User> users = new HashSet<>();
+
+        Role role = roleRepo.findByName("buyer");
+
+        if (checkUserByUsername(user.getUsername())) {
+            return "Пользователь с таким логином уже существует";
+        } else
+            user.setActivationCode(UUID.randomUUID().toString());
+
+        if(user.getEmail() != null) {
+
+        }
+            roles.add(role);
+            users.add(user);
+
+            role.setUsers(users);
+            user.setRoles(roles);
+            userRepo.save(user);
+        return "Вы зарегистрированы";
     }
 
     @Override
     public User findByUsername(String username) {
         return userRepo.findByUsername(username);
+    }
+
+    @Override
+    public Boolean checkUserByUsername(String username) {
+        User user = userRepo.findByUsername(username);
+        if (user != null) {
+            return true;
+        } else return false;
     }
 }

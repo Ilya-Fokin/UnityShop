@@ -20,6 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().loginPage("/start_session");
 
+        http.csrf().disable();
+
+
 
     }
 }

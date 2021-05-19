@@ -22,8 +22,10 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "date_of_birth")
+    @Column(name = "date")
     private String date;
+
+    private String activationCode;
 
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
@@ -39,11 +41,12 @@ public class User {
 
     public User() {}
 
-    public User(String name, String username, String email, String date) {
+    public User(String name, String username, String email, String password, String date) {
         this.name = name;
         this.username = username;
         this.email = email;
-        this.date =date;
+        this.password = password;
+        this.date = date;
     }
 
     public Long getId() {
@@ -86,5 +89,12 @@ public class User {
     }
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
     }
 }
