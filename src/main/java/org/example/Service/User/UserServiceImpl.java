@@ -20,6 +20,9 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private RoleRepo roleRepo;
 
+    @Autowired
+    private MailSender mailSender;
+
     @Override
     public String save(User user) {
         Set<Role> roles = new HashSet<>();
@@ -30,18 +33,44 @@ public class UserServiceImpl implements UserService{
         if (checkUserByUsername(user.getUsername())) {
             return "Пользователь с таким логином уже существует";
         } else
-            user.setActivationCode(UUID.randomUUID().toString());
+
+        if (checkUserByEmail(user.getEmail())) {
+            return "Пользователь с такой почтой уже зарегистрирован";
+        } else
+
+        user.setActivationCode(UUID.randomUUID().toString());
+
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+        roles.add(role);
+        users.add(user);
+
+        role.setUsers(users);
+        user.setRoles(roles);
+
+        userRepo.save(user);
 
         if(user.getEmail() != null) {
+            String message = String.format("Пожалуйста, для активации аккаунта перейдите по ссылке: http://localhost:8080/activate/%s",
+                    user.getActivationCode());
+            mailSender.send(user.getEmail(), "Activation Code", message);
+        } else return "Отсутствует адрес получателя";
 
+        return "Письмо с подтверждением отправлено на почту";
+    }
+
+    @Override
+    public boolean activateUser(String code) {
+        User user = userRepo.findByActivationCode(code);
+
+        if (user == null) {
+            return false;
         }
-            roles.add(role);
-            users.add(user);
 
-            role.setUsers(users);
-            user.setRoles(roles);
-            userRepo.save(user);
-        return "Вы зарегистрированы";
+        user.setActivationCode(null);
+        userRepo.save(user);
+        return true;
     }
 
     @Override
@@ -55,5 +84,14 @@ public class UserServiceImpl implements UserService{
         if (user != null) {
             return true;
         } else return false;
+    }
+
+
+    public Boolean checkUserByEmail(String email) {
+        User user = userRepo.findByEmail(email);
+
+        if (user == null) {
+            return false;
+        } else return true;
     }
 }

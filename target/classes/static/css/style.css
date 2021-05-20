@@ -402,6 +402,33 @@ span select{
 	box-shadow: none;
 }
 
+.activation_block{
+	width: 60%;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 37px;
+	background: #973A40;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#message_block{
+	position: fixed;
+	left: 17%;
+	top: 20%;
+	width: 65%;
+	padding: 45px;
+	margin: 0 auto;
+	background-color: #f8f8f8;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	display: none;
+	text-align: center;
+	font-size: 18px;
+	align-items: center;
+}
+#message_block p{
+	color: black;
+}
+
 
 
 

@@ -23,7 +23,21 @@ function signUp() {
         dataType: 'text',
 
         success: function (data) {
+            $("#msg").html(data);
+            show();
             console.log(data);
         }
     })
+}
+
+function hide() {
+    $('.containerMain').css("filter", "none");
+    $('.header').css("filter", "none");
+    $('#message_block').css("display", "none");
+}
+
+function show() {
+    $('.containerMain').css("filter", "blur(10px)");
+    $('.header').css("filter", "blur(10px)");
+    $('#message_block').css("display", "block");
 }

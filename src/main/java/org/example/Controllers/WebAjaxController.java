@@ -6,9 +6,7 @@ import org.example.Service.User.UserService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class WebAjaxController {
@@ -29,4 +27,5 @@ public class WebAjaxController {
 
         return userService.save(user);
     }
+
 }

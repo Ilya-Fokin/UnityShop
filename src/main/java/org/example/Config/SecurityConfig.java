@@ -13,6 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/basket/**").authenticated()
                 .antMatchers("/seller_account/**").hasRole("seller")
                 .antMatchers("/admin_account/**").hasRole("admin")
+                .anyRequest().permitAll()
 
                 .and()
                 .logout().logoutSuccessUrl("/")
