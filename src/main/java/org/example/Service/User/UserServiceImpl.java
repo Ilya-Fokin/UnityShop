@@ -2,6 +2,7 @@ package org.example.Service.User;
 
 import org.example.Domains.Role;
 import org.example.Domains.User;
+import org.example.Mail.MailSender;
 import org.example.Repository.RoleRepo;
 import org.example.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,9 @@ public class UserServiceImpl implements UserService{
             return "Пользователь с таким логином уже существует";
         } else
 
-        if (checkUserByEmail(user.getEmail())) {
+        /*if (checkUserByEmail(user.getEmail())) {
             return "Пользователь с такой почтой уже зарегистрирован";
-        } else
+        } else*/
 
         user.setActivationCode(UUID.randomUUID().toString());
 
@@ -86,12 +87,22 @@ public class UserServiceImpl implements UserService{
         } else return false;
     }
 
-
+    @Override
     public Boolean checkUserByEmail(String email) {
         User user = userRepo.findByEmail(email);
 
         if (user == null) {
             return false;
         } else return true;
+    }
+
+    @Override
+    public Boolean findByUsernameAndPassword(String username, String password) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        User user = userRepo.findByUsername(username);
+        String passwordUs = user.getPassword();
+        if (passwordUs.equals(bCryptPasswordEncoder.encode(password))) {
+            return true;
+        } else return false;
     }
 }

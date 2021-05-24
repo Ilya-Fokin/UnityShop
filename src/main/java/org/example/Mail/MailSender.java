@@ -1,4 +1,4 @@
-package org.example.Service.User;
+package org.example.Mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -169,9 +169,10 @@ h3, h2, h1{
 	color: #f8f8f8;
 }
 input {
+	width: 85%;
 	margin-top: 20px;
 	margin-left: 15px;
-    padding: 10px;
+    padding: 10px 15px;
 	border: 0px;
 	border-radius: 10px;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -179,6 +180,7 @@ input {
 
 input:focus{
 	outline: none;
+	border: 3px darkcyan solid;
 }
 button{
 	height: 30px;
@@ -403,11 +405,12 @@ span select{
 }
 
 .activation_block{
-	width: 60%;
+	width: 40%;
 	margin: 0 auto;
+	padding: 25px;
 	text-align: center;
-	font-size: 37px;
-	background: #973A40;
+	font-size: 27px;
+	background: #f8f8f8;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
@@ -427,6 +430,14 @@ span select{
 }
 #message_block p{
 	color: black;
+}
+
+.info_msg{
+	margin: 0 auto;
+	padding-top: 20px;
+	text-align: center;
+	color: #f8f8f8;
+	display: none;
 }
 
 

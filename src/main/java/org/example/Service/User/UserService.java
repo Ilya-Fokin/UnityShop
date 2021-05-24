@@ -8,4 +8,5 @@ public interface UserService {
     Boolean checkUserByUsername(String username);
     boolean activateUser(String code);
     Boolean checkUserByEmail(String email);
+    Boolean findByUsernameAndPassword(String username, String password);
 }

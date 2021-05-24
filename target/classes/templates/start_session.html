@@ -3,12 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
 	<title>UnityShop</title>
 	<link rel="icon" type="image/png" href="ISLAM.jpg">
+	<script src="js/jquery-3.0.0.min.js"></script>
 </head>
 <body>
 		<div class="header">
@@ -113,11 +114,13 @@
 
 				<div id="sign_in_block">
 					<h3>Войдите в систему</h3>
-					<form id="sign_in_form" method="GET">
-						<p><input class="login_field" type="text" name="username" placeholder="Логин" required>
-					    <p><input class="password_field" type="password" name="password" placeholder="Пароль" required></p>
-						<button id="sign_in_button">Войти</button>
-					</form> 
+					<form id="sign_in_form" action="/sign_in_user" onsubmit="return false">
+						<p><input id="username_sign_in" type="text" name="username" placeholder="Логин" required></p>
+					    <p><input id="password_sign_in" type="password" name="password" placeholder="Пароль" required></p>
+						<button id="sign_in_button" onclick="signIn()">Войти</button>
+					</form>
+					<div class="info_msg" id="info_msg_id">Неправильно введены логин или пароль</div>
+
 					                   
 				</div>
 				
@@ -138,4 +141,5 @@
 	
 </div>
 </body>
+<script src="js/JavaScript.js"></script>
 </html>

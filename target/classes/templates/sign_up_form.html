@@ -118,14 +118,18 @@
                     <p><input id="email_field" type="email" name="email" placeholder="Почта" required></p>
                     <p><input id="password_field" type="password" name="password" placeholder="Пароль" required></p>
                     <p><input id="date_field" type="date" name="date" placeholder="Дата рождения" required></p>
-                    <button id="sign_up_button" onclick="signUp()">Отправить</button>
+                    <button id="sign_up_button" onclick="validationForm()">Отправить</button>
                 </form>
+				<div class="info_msg" id="info_msg_valid"></div>
+
             </div>
 		</div>
 	
-
-	
 </div>
+		<div id="message_block">
+			<p id="msg"></p>
+			<button id="close_button" onclick="hide()">Закрыть</button>
+		</div>
 </body>
 <script src="js/JavaScript.js"></script>
 </html>

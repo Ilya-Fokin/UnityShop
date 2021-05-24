@@ -1,15 +1,16 @@
-package org.example.Controllers;
+package org.example.Controllers.LoginRegistrationController;
 
 import org.example.Domains.User;
-import org.example.Repository.UserRepo;
 import org.example.Service.User.UserService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class WebAjaxController {
+public class RegistrationController {
     @Autowired
     private UserService userService;
 
@@ -27,5 +28,4 @@ public class WebAjaxController {
 
         return userService.save(user);
     }
-
 }
