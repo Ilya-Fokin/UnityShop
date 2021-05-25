@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
   <title>UnityShop</title>
   <link rel="icon" type="image/png" href="ISLAM.jpg">
+  <script src="/js/jquery-3.0.0.min.js"></script>
 </head>
 <body>
 <div class="header">
   <div class="logo">
     <a class="BackToMain" href="/">
-      <img src="Images/Icons/Unity.jpg" width="288" height="150" hspace="40.5">
+      <img src="/Images/Icons/Unity.jpg" width="288" height="150" hspace="40.5">
     </a>
   </div>
 
@@ -31,7 +31,7 @@
             <a href="#">Худи</a>
           </li>
           <li class="sub_list_cataloge">
-            <a href="/mens_t_shirts">Футболки</a>
+            <a href="#">Футболки</a>
           </li>
           <li class="sub_list_cataloge">
             <a href="#">Брюки</a>
@@ -102,33 +102,29 @@
   </nav>
 
   <nav class="menu">
-    <a class="menu_user" href="/basket"><img src="Images/Icons/Корзина.png" width="24" height="24"></a>
-    <a class="menu_user" href="/account"><img src="Images/Icons/Профиль2.png" width="30" height="24"></a>
+    <a class="menu_user" href="/basket"><img src="/Images/Icons/Корзина.png" width="24" height="24"></a>
+    <a class="menu_user" href="/account"><img src="/Images/Icons/Профиль2.png" width="30" height="24"></a>
   </nav>
 </div>
 
 
 <div class="containerMain">
+  <div id = "add_seller">
+    <h2>Добавить продавца</h2>
+    <form id="add_seller_form" onsubmit="return false">
+      <p><input id="username_field_add_seller" type="text" name="username" placeholder="Введите логин пользователя" required></p>
+      <button id="sign_up_button" onclick="addSeller()">Добавить</button>
+    </form>
+    <div class="info_msg" id="info_msg_id"></div>
 
-  <div class="personal_page">
-
-    <div id="personal_page_header">
-      <h3>Личный кабинет:</h3>
-    </div>
-
-    <div id="personal_page_menu">
-      <a href="basket.html">1. Корзина</a>
-      <a href="#">2. Избранное</a>
-      <a href="#">3. Мои заказы</a>
-      <a href="/admin_account/add_product">4. Добавить товар</a>
-      <a href="/admin_account/delete_product">5. Удалить товар</a>
-      <a href="/admin_account/add_seller_page">6. Добавить продавца</a>
-    </div>
   </div>
 </div>
 
-
-
+</div>
+<div id="message_block">
+  <p id="msg"></p>
+  <button id="close_button" onclick="hide()">Закрыть</button>
 </div>
 </body>
+<script src="/js/JavaScript.js"></script>
 </html>

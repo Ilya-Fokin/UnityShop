@@ -176,11 +176,11 @@ input {
 	border: 0px;
 	border-radius: 10px;
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	vertical-align: top;
 }
 
 input:focus{
 	outline: none;
-	border: 3px darkcyan solid;
 }
 button{
 	height: 30px;
@@ -315,7 +315,7 @@ img{
 
 .personal_page{	
 	width: 70%;
-	background: #f8f8f8;
+	background: #343A40;
 	margin: 35px auto;
 	padding: 45px;
 	display: flex;
@@ -325,23 +325,27 @@ img{
 }
 
 .personal_page h3{
-	color: black;
+	color: #f8f8f8;
 	width: 48%;
 	margin: 0 auto;
-	border-bottom: 3px solid #973A40;
+	padding: 8px;
+	border-bottom: 3px solid darkcyan;
 }
 .personal_page p{
-	color: black;
+	color:#f8f8f8;
 }
 
 #personal_page_header{
-	width: 50%;
+	width: 60%;
 	padding: 10px;
 	margin: 0 auto;
 	text-align: center;
 	align-items: center;
 }
 
+label{
+	color: #f8f8f8;
+}
 #personal_page_menu{
 	width: 50%;
 	margin: 0 auto;
@@ -351,7 +355,7 @@ img{
 }
 
 #personal_page_menu a {
-	color: black;
+	color: #f8f8f8;
 	margin-top: 25px;
 	width: 40%;
 	font-size: 17px;
@@ -372,8 +376,10 @@ span{
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  margin: 10px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  margin-left: 35px;
+}
+span:focus{
+	outline: none;
 }
 
 span select{
@@ -387,22 +393,60 @@ span select{
 }
 
 .field_change{
-	padding: 15px;
+	width: 100%;
+	padding: 25px;
+	color: #f8f8f8;
 	margin: 5px;
+	display: flex;
+	justify-content: left;
 	align-items: center;
-	border-bottom: 3px #973A40 solid;
+	border-bottom: 3px darkcyan solid;
+	vertical-align: bottom;
 }
 
-.check_input{
-	margin-left: 15px;
-	outline: none;
-	-ms-transform: scale(2); 
-	-moz-transform: scale(2); 
-	-o-transform: scale(2); 
-	height: 17px; 
-	width: 17px;
-	box-shadow: none;
+
+
+.title{
+	text-align: center;
+	align-items: center;
+	vertical-align: middle;
+	margin-right: 35px;
+	color: #f8f8f8;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+
 }
+
+.element{
+	width: 60%;
+	
+	vertical-align: middle;
+}
+
+.element input{
+	margin-top: 0;
+}
+
+.size_element_block{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.size_element_block .title{
+	margin: 0;
+	padding: 5px;
+}
+
+.title input{
+	width: 40%;
+	margin: 5px auto;
+	padding: 3px;
+	text-align: center;
+}
+
+
 
 .activation_block{
 	width: 40%;
@@ -440,13 +484,123 @@ span select{
 	display: none;
 }
 
+#add_seller{
+	width: 50%;
+	background: #343A40;
+	margin: 35px auto;
+	padding: 45px;
+	align-items: center;
+	text-align: center;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+#add_seller button{
+	background: #535e68;
+	width: 25%;
+}
+
+#add_seller button:hover{
+	background: darkcyan;
+	transition: .7s;
+}
+
+#add_seller input{
+	margin-top: 20px;
+	width: 65%;
+}
+
+#add_product_button{
+	color: #f8f8f8;
+	width: 25%;
+	margin: 35px auto;
+	background: darkcyan;	
+}
+
+#add_product_button:hover{
+	background: #535e68;
+	transition: .7s;
+}
+
+.personal_page input{
+	box-shadow: none;
+}
+
+input[type="file"]{
+	color:#f8f8f8;
+}
 
 
 
 
+#delete_product{
+	width: 50%;
+	background: #343A40;
+	margin: 35px auto;
+	padding: 45px;
+	align-items: center;
+	text-align: center;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+#delete_product_button{
+	margin-top: 27px;
+}
+#delete_product_button:hover{
+	background: #973A40;
+	transition: .7s;
 
+}
 
+.content_zone{
+	width: 85%;
+	margin: 0 auto;
+	padding: 45px;
+	background: #343A40;
+	display: flex;
+	justify-content: space-evenly;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	flex-wrap: wrap;
+}
 
+.product_block{
+	margin-bottom: 45px;
+	margin-right: 45px;
+	background: #f8f8f8;
+	width: 23%;
+	display: block;
+	min-height: 400px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.product_block p{
+	color: black;
+}
+
+.product_block:hover{
+	opacity: 0.7;
+	transition: .5s;
+}
+.image_block{
+	width: 100%;
+	height: 80%;
+	background: #973A40;
+	align-items: center;
+	text-align: center;
+}
+
+.image_block img{
+	max-height: 355px;
+	width: 100%;
+    
+}
+
+.product_details{
+	width: 100%;
+	padding: 20px;
+}
+#product_name{
+	font-weight: bold;
+	border-bottom: 1px darkcyan solid;
+
+}
 
 
 

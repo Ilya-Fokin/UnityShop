@@ -95,8 +95,27 @@ function validationForm() {
         error++;
     }
 
+}
 
+function addSeller() {
+    let login = $("#username_field_add_seller").val();
 
+    $.ajax({
+        url: '/add_seller/' + login,
+        method: 'POST',
+        dataType: 'text',
 
+        success: function (message) {
+            console.log(message);
+            $("#info_msg_id").text(message);
+            $('#info_msg_id').css("display", "block");
+        },
+        error: function (message_error) {
+            console.log(message_error);
+            $("#info_msg_id").text(message_error);
+            $('#info_msg_id').css("display", "block");
+        }
+
+    })
 }
 

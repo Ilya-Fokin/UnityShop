@@ -105,4 +105,27 @@ public class UserServiceImpl implements UserService{
             return true;
         } else return false;
     }
+
+    @Override
+    public Boolean updateUserRole(String username) {
+        Set<Role> roles = new HashSet<>();
+        Set<User> users = new HashSet<>();
+
+        Role role = roleRepo.findByName("seller");
+
+        if (checkUserByUsername(username)) {
+            User user = findByUsername(username);
+
+            if (user.getActivationCode() == null) {
+                roles.add(role);
+                users.add(user);
+
+                user.setRoles(roles);
+
+                userRepo.save(user);
+
+                return true;
+            } else return false;
+        } else return false;
+    }
 }

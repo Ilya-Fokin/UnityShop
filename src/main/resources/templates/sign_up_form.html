@@ -112,13 +112,12 @@
 			<div id = "sign_up_form_registration">
                 <h2>Регистрация</h2>
                 <form id="sign_up_form" onsubmit="return false">
-					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <p><input id="name_field" type="text" name="name" placeholder="Имя" required></p>
 					<p><input id="username_field" type="text" name="username" placeholder="Логин" required></p>
                     <p><input id="email_field" type="email" name="email" placeholder="Почта" required></p>
                     <p><input id="password_field" type="password" name="password" placeholder="Пароль" required></p>
                     <p><input id="date_field" type="date" name="date" placeholder="Дата рождения" required></p>
-                    <button id="sign_up_button" onclick="validationForm()">Отправить</button>
+                    <button id="sign_up_button" onclick="signUp()">Отправить</button>
                 </form>
 				<div class="info_msg" id="info_msg_valid"></div>
 

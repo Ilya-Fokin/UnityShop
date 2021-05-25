@@ -9,4 +9,5 @@ public interface UserService {
     boolean activateUser(String code);
     Boolean checkUserByEmail(String email);
     Boolean findByUsernameAndPassword(String username, String password);
+    Boolean updateUserRole(String username);
 }

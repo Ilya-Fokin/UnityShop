@@ -6,15 +6,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 	<title>UnityShop</title>
 	<link rel="icon" type="image/png" href="ISLAM.jpg">
+	<script src="/js/jquery-3.0.0.min.js"></script>
 </head>
 <body>
 		<div class="header">
 			<div class="logo">
-				<a class="BackToMain" href="index.html">
-					<img src="../static/Изображения/Icons/Unity.jpg" width="288" height="150" hspace="40.5">
+				<a class="BackToMain" href="/">
+					<img src="/Images/Icons/Unity.jpg" width="288" height="150" hspace="40.5">
 				</a>
 			</div>
 
@@ -102,8 +103,8 @@
 			</nav>
 
 			<nav class="menu">
-				<a class="menu_user" href="basket.html"><img src="../static/Изображения/Icons/Корзина.png" width="24" height="24"></a>
-				<a class="menu_user" href="start_session.html"><img src="../static/Изображения/Icons/Профиль2.png" width="30" height="24"></a>
+				<a class="menu_user" href="/basket"><img src="/Images/Icons/Корзина.png" width="24" height="24"></a>
+				<a class="menu_user" href="/start_session"><img src="/Images/Icons/Профиль2.png" width="30" height="24"></a>
 			</nav>
 		</div>
 
@@ -117,69 +118,139 @@
                 </div>
 
                 <form id="add_product_form" onsubmit="return false">
-
-                    <div class="field_change">
-                        1. Выберете категорию товара: 
-                    <span class="category_product">
-                        <select>
-                            <option>Куртки</option>
-                            <option>Худи</option>
-                            <option>Футболки</option>
-                            <option>Куртки</option>
-                            <option>Брюки</option>
-                            <option>Обувь</option>
-                            <option>Аксессуары</option>
-                        </select>
-                    </span>
+					
+					<div class="field_change">
+						<div class="title">
+							1. Название товара:
+						</div>
+						<div class="element">
+							<input type="text" id="name_input" name="name" placeholder="Введите название" required>
+						</div>
                     </div>
 
                     <div class="field_change">
-                        2. Раздел:
-                        <span class="chapter_product">
-                            <select>
-                                <option>Мужчины</option>
-                                <option>Женщины</option>
-                                <option>Дети</option>
-                            </select>
-                        </span>
+						<div class="title">
+							2. Выберете категорию товара: 
+						</div>
+
+						<div class="element">
+							<span class="category_product">
+								<select id="category_select">
+									<option></option>
+									<option>Куртки</option>
+									<option>Худи</option>
+									<option>Футболки</option>
+									<option>Брюки</option>
+									<option>Обувь</option>
+									<option>Аксессуары</option>
+								</select>
+							</span>
+						</div>
+                    </div>
+
+                    <div class="field_change" id="chapter">
+						<div class="title">
+							3. Раздел:
+						</div>
+						<div class="element">
+							<span class="chapter_product">
+								<select id="chapter_select">
+									<option></option>
+									<option>Мужчины</option>
+									<option>Женщины</option>
+									<option>Мальчики</option>
+									<option>Девочки</option>
+								</select>
+							</span>
+						</div>
                     </div>
 
                     <div class="field_change">
-                        3. Заголовок:
-                        <input type="text" id="title_product" name="title_product" placeholder="Введите заголовок">
-                    </div>
-
-                    <div class="field_change">
-                        4. Описание:
-                        <input type="text" id="description_product" name="description_product" placeholder="Введите описание">
-                    </div>
-
-                    <div class="field_change">
-                        5. Укажите размеры:
-                        <input type="checkbox" class="check_input" id="sizeXS" name="sizeXS" value="XS">
-                        <label for="sizeXS">XS</label>
-
-                        <input type="checkbox" class="check_input" id="sizeS" name="sizeS" value="S">
-                        <label for="sizeS">S</label>
-
-                        <input type="checkbox" class="check_input" id="sizeM" name="sizeM" value="M">
-                        <label for="sizeM">M</label>
-
-                        <input type="checkbox" class="check_input" id="sizeL" name="sizeL" value="L">
-                        <label for="sizeL">L</label>
-
-                        <input type="checkbox" class="check_input" id="sizeXL" name="sizeXL" value="XL">
-                        <label for="sizeXL">XL</label>
-                    </div>
-
-                    <div class="field_change">
-                        4. Добавить изображение:
+						<div class="title">
+							4. Описание:
+						</div>
+						<div class="element">
+							<input type="text" id="description_input" name="description" placeholder="Введите описание" required>
+						</div>
+                        
                         
                     </div>
 
+                    <div class="field_change">
+						<div class="title">
+							5. Укажите размер и кол-во:
+						</div>
+						<div class="size_element_block">
+							<div class="title">
+								XS
+								<input type="number" class="xs_input" id="sizeXS" name="XS" placeholder="Кол-во" required>
+							</div>
 
-                
+							<div class="title">
+								S
+								<input type="number" class="s_input" id="sizeS" name="S" placeholder="Кол-во" required>
+							</div>
+
+							<div class="title">
+								M
+								<input type="number" class="m_input" id="sizeM" name="M" placeholder="Кол-во" required>
+							</div>
+
+							<div class="title">
+								L
+								<input type="number" class="l_input" id="sizeL" name="L" placeholder="Кол-во" required>
+							</div>
+
+							<div class="title">
+								XL
+								<input type="number" class="XL_input" id="sizeXL" name="XL" placeholder="Кол-во" required>
+							</div>
+						</div>
+						<!--<div class="title">
+							<p>XS</p>
+						</div>
+						<div class="element">
+							<input type="text" class="xs_input" id="sizeXS" name="XS" placeholder="Введите количество" required>
+						</div>
+                        
+
+                        <p>S</p>
+                        <input type="text" class="s_input" id="sizeS" name="S" placeholder="Введите количество" required>           
+                         
+						<p>M</p>
+                        <input type="text" class="m_input" id="sizeM" name="M" placeholder="Введите количество" required>
+                        
+                        <p>L</p>
+                        <input type="text" class="l_input" id="sizeL" name="L" placeholder="Введите количество" required>
+                    
+                        <p>XL</p>
+                        <input type="text" class="XL_input" id="sizeXL" name="XL" placeholder="Введите количество" required>-->
+                       
+                    </div>
+
+                    <div class="field_change">
+						<div class="title">
+							6. Добавить изображение:
+						</div>
+						<div class="element">
+							<input type="file" id="image_product" accept="image/jpeg" required>
+						</div>
+                    </div>
+
+					<div class="field_change">
+						<div class="title">
+							7. Укажите цену:
+						</div>
+						<div class="element">
+							<input type="number" id="price_input" name="price" placeholder="Введите цену" required>
+						</div>
+                    </div>
+
+
+                    <button type="submit" id="add_product_button" onclick="addProduct()">Добавить</button>
                 </form>
+
+				<div class="info_msg" id="info_msg_id"></div>
             </div>
 		</div>
 	
@@ -187,4 +258,5 @@
 	
 </div>
 </body>
+<script src="/js/edit_product.js"></script>
 </html>

@@ -30,10 +30,13 @@ public class WebController {
     public String accountPage() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         boolean hasAdmin = auth.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("admin"));
-
+        boolean hasSeller = auth.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("seller"));
         if (hasAdmin) {
             return "redirect:/admin_account";
         } else
+            if (hasSeller) {
+                return "redirect:/seller_account";
+            } else
             return "account";
     }
 
@@ -41,7 +44,6 @@ public class WebController {
     public String sellerAccountPage() {
         return "seller_account";
     }
-
 
     @GetMapping("/basket")
     public String basketPage() {
@@ -58,6 +60,14 @@ public class WebController {
         return "photo_album";
     }
 
+    @GetMapping("/admin_account/add_seller_page")
+    public String addSellerPage() {
+        return "add_seller";
+    }
 
+    @GetMapping("/mens_t_shirts")
+    public String menTShirtPage() {
+        return "mens_t-shirt";
+    }
 
 }
