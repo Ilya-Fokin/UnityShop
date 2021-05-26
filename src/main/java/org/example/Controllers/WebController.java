@@ -1,6 +1,5 @@
 package org.example.Controllers;
 
-import org.example.Domains.User;
 import org.example.Service.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -8,9 +7,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import java.security.Principal;
 
 @Controller
 public class WebController {
@@ -65,9 +61,20 @@ public class WebController {
         return "add_seller";
     }
 
-    @GetMapping("/mens_t_shirts")
-    public String menTShirtPage() {
-        return "mens_t-shirt";
+    @GetMapping("/Mens/{category}")
+    public String mensProductByCategory(@PathVariable(name = "category") String category) {
+        return "mens_product_page";
+    }
+
+    @GetMapping("/Woomens/{category}")
+    public String woomensProductByCategory(@PathVariable(name = "category") String category) {
+        return "mens_product_page";
+    }
+
+
+    @GetMapping("/product_page/{id}")
+    public String productPage(@PathVariable(name = "id") String response) {
+        return "product_page";
     }
 
 }

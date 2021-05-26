@@ -17,12 +17,6 @@ public class ProductServiceImpl implements ProductService{
     private ProductRepo productRepo;
 
     @Autowired
-    private CategoryRepo categoryRepo;
-
-    @Autowired
-    private ChapterRepo chapterRepo;
-
-    @Autowired
     private ProductSizeService productSizeService;
 
      @Override
@@ -88,5 +82,22 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product findByCategoryAndChapter(String category, String chapter) {
         return productRepo.findByCategoryAndChapter(category, chapter);
+    }
+
+    @Override
+    public Product getProductById(Long id) {
+         if (productRepo.findById(id).isPresent()) {
+             Product product = productRepo.findById(id).get();
+             return product;
+         }  else
+        return null;
+    }
+
+    @Override
+    public Boolean findById(Long id) {
+         if (productRepo.findById(id).isPresent()) {
+             return true;
+         } else
+        return null;
     }
 }

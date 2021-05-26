@@ -24,7 +24,48 @@ public class ShowProductsController {
 
     @GetMapping("/get_all_products/{Chapter}/{Category}")
     public List<Product> showMensTShirts(@PathVariable(name = "Chapter") String chapter, @PathVariable(name = "Category") String category) {
+        if (chapter.equals("Mens")) {
+            if (category.equals("T-shirt")) {
+                return productService.getAllByCategoryAndChapter("Футболки", "Мужчины");
+            } else
+            if (category.equals("Hoody")) {
+                return productService.getAllByCategoryAndChapter("Худи", "Мужчины");
+            } else
+            if (category.equals("Jacket")) {
+                return productService.getAllByCategoryAndChapter("Куртки", "Мужчины");
+            } else
+            if (category.equals("Trousers")) {
+                return productService.getAllByCategoryAndChapter("Брюки", "Мужчины");
+            } else
+            if (category.equals("Accessories")) {
+                return productService.getAllByCategoryAndChapter("Аксессуары", "Мужчины");
+            } else
+                return null;
+        } else
 
-        return productService.getAllByCategoryAndChapter(category, chapter);
+        if (chapter.equals("Woomens")) {
+            if (category.equals("T-shirt")) {
+                return productService.getAllByCategoryAndChapter("Футболки", "Женщины");
+            } else
+            if (category.equals("Hoody")) {
+                return productService.getAllByCategoryAndChapter("Худи", "Женщины");
+            } else
+            if (category.equals("Jacket")) {
+                return productService.getAllByCategoryAndChapter("Куртки", "Женщины");
+            } else
+            if (category.equals("Trousers")) {
+                return productService.getAllByCategoryAndChapter("Брюки", "Женщины");
+            } else
+            if (category.equals("Accessories")) {
+                return productService.getAllByCategoryAndChapter("Аксессуары", "Женщины");
+            } else
+                return null;
+        } else
+        return null;
+    }
+
+    @GetMapping("/get_product_by_id/{id}")
+    public Product getProductById(@PathVariable(name = "id") Long id) {
+        return productService.getProductById(id);
     }
 }

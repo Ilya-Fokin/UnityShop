@@ -128,4 +128,11 @@ public class UserServiceImpl implements UserService{
             } else return false;
         } else return false;
     }
+
+    @Override
+    public Boolean findById(Long id) {
+        if (userRepo.findById(id).isPresent()) {
+            return true;
+        } else return false;
+    }
 }

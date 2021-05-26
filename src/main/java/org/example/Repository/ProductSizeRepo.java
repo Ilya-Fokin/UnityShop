@@ -10,4 +10,5 @@ import java.util.Set;
 @Repository
 public interface ProductSizeRepo extends CrudRepository<ProductSize, Long> {
     Iterable<ProductSize> findAllByProductID(Long id);
+    ProductSize findByProductIDAndSizeID(Long productId, Long sizeId);
 }

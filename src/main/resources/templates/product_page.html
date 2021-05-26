@@ -100,17 +100,49 @@
 
 
 <div class="containerMain">
-  <div id = "add_seller">
-    <h2>Добавить продавца</h2>
-    <form id="add_seller_form" onsubmit="return false">
-      <p><input id="username_field_add_seller" type="text" name="username" placeholder="Введите логин пользователя" required></p>
-      <button id="sign_up_button" onclick="addSeller()">Добавить</button>
-    </form>
-    <div class="info_msg" id="info_msg_id"></div>
+
+  <div class="content_zone">
+
+    <div class="image_zone_product_id">
+      <!--<img src="/Images/Product/hmgoepprod.jpg">-->
+    </div>
+
+    <div class="info_zone_product_id">
+
+      <div class="product_name-zone">
+        <!--Name of product-->
+      </div>
+
+      <div class="product_description_zone">
+        <!--<p id="description">Футболка поло серого цвета</p>-->
+      </div>
+
+      <div class="size_select_zone">
+        <select id="size_product_select" >
+          <option selected  disabled> Выбор размера</option>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+        </select>
+      </div>
+
+      <div class="price_product_id">
+        <!--<p id="price_product_id">Цена: 2500руб</p>-->
+      </div>
+
+      <div class="basket_favorites-zone">
+        <button type="button" id="add_to_basket_button" onclick="addToBasket()">Добавить в коризну</button>
+      </div>
+
+
+
+
+
+
+    </div>
 
   </div>
-</div>
-
 </div>
 <div id="message_block">
   <p id="msg"></p>
@@ -118,4 +150,6 @@
 </div>
 </body>
 <script src="/js/JavaScript.js"></script>
+<script src="/js/show_product.js"></script>
+<script src="/js/basket.js"></script>
 </html>

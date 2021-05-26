@@ -11,4 +11,6 @@ public interface ProductService {
     String deleteProduct(String name);
     List<Product> getAllByCategoryAndChapter(String category, String chapter);
     Product findByCategoryAndChapter(String category, String chapter);
+    Product getProductById(Long id);
+    Boolean findById(Long id);
 }

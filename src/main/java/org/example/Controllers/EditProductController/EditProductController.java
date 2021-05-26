@@ -1,12 +1,15 @@
 package org.example.Controllers.EditProductController;
 
 import org.example.Domains.ProductSize;
+import org.example.Service.BasketService.BasketService;
 import org.example.Service.ProductServices.ProductService;
 import org.example.Service.ProductSizeService.ProductSizeService;
 import org.example.Service.SizeService.SizeService;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +25,11 @@ public class EditProductController {
 
     @Autowired
     private SizeService sizeService;
+
+
+
+    @Autowired
+    private BasketService basketService;
 
     @PostMapping("/add_product_item")
     public String addProduct(@RequestBody String product) throws JSONException {
@@ -76,4 +84,5 @@ public class EditProductController {
     public String deleteProduct(@PathVariable(name = "name") String nameProduct) {
         return productService.deleteProduct(nameProduct);
     }
+
 }

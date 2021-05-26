@@ -1,5 +1,6 @@
 package org.example.Service.User;
 
+import jdk.jfr.BooleanFlag;
 import org.example.Domains.User;
 
 public interface UserService {
@@ -10,4 +11,5 @@ public interface UserService {
     Boolean checkUserByEmail(String email);
     Boolean findByUsernameAndPassword(String username, String password);
     Boolean updateUserRole(String username);
+    Boolean findById(Long id);
 }

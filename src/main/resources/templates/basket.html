@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script src = "/js/jquery-3.0.0.min.js"></script>
 	<title>UnityShop</title>
 	<link rel="icon" type="image/png" href="../ISLAM.jpg">
 </head>
@@ -27,56 +28,70 @@
 
 						<ul class="sub_cataloge">
 							<li class="sub_list_cataloge">
-						        <a href="#">Куртки</a> 
-				            </li>
-				            <li class="sub_list_cataloge">
-						        <a href="#">Худи</a> 
-				            </li>
-				            <li class="sub_list_cataloge">
-						        <a href="#">Футболки</a> 
-				            </li>
-				            <li class="sub_list_cataloge">
-						        <a href="#">Брюки</a> 
-				            </li>
-				            <li class="sub_list_cataloge">
-						        <a href="#">Обувь</a> 
-				            </li>
-				            <li class="sub_list_cataloge">
-						        <a href="#">Аксессуары</a> 
-				            </li>
-						</ul> 
-				    
-				    </li>
+								<a href="/Mens/Jacket">Куртки</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="/Mens/Hoody">Худи</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="/Mens/T-shirt">Футболки</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="/Mens/Trousers">Брюки</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="/Mens/Accessories">Аксессуары</a>
+							</li>
+						</ul>
+
+					</li>
 					<li class="main_list_cataloge">
-						<a href="#">Женщины</a> 
+						<a href="#">Женщины</a>
 
 						<ul class="sub_cataloge">
 							<li class="sub_list_cataloge">
-						        <a href="#">Куртки</a> 
-				            </li>
-				            <li class="sub_list_cataloge">
-						        <a href="#">Худи</a> 
-				            </li>
-				            <li class="sub_list_cataloge">
-						        <a href="#">Футболки</a> 
-				            </li>
-				            <li class="sub_list_cataloge">
-						        <a href="#">Брюки</a> 
-				            </li>
-				            <li class="sub_list_cataloge">
-						        <a href="#">Обувь</a> 
-				            </li>
-				            <li class="sub_list_cataloge">
-						        <a href="#">Аксессуары</a> 
-				            </li>
-						</ul> 
-				    </li>
+								<a href="/Woomens/Jacket">Куртки</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="/Woomens/Hoody">Худи</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="/Woomens/T-shirt">Футболки</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="/Woomens/Trousers">Брюки</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="/Woomens/Accessories">Аксессуары</a>
+							</li>
+						</ul>
+
+					</li>
 					<li class="main_list_cataloge">
-						<a href="#">Дети</a> 
-				    </li>
+						<a href="#">Дети</a>
+
+						<ul class="sub_cataloge">
+							<li class="sub_list_cataloge">
+								<a href="#">Куртки</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="#">Худи</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="#">Футболки</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="#">Брюки</a>
+							</li>
+							<li class="sub_list_cataloge">
+								<a href="#">Аксессуары</a>
+							</li>
+						</ul>
+					</li>
+
 					<li class="main_list_cataloge">
-						<a href="photo_album.html">Фотоальбом</a> 
-				    </li>
+						<a href="/photo_album">Фотоальбом</a>
+					</li>
 				</ul>
 			</nav>
 
@@ -90,18 +105,62 @@
 
         <div class="containerMain">
         	<div class="basket_block">
-        		<h1>Корзина</h1>
 
-                <div class="error_basket">
+				<div class="header_basket">
+					<h1>Корзина</h1>
+					<p id="sum">Итого: 6000р</p>
+				</div>
+
+
+				<div class="list_products">
+
+					<div class="product_in_basket">
+						<a href="#" class="image_info_block">
+							<div class="image_product_in_basket">
+								<img src="../Static/Images/Product/9e813034df741c5b621228323bec7467.jpg">
+							</div>
+							<div class="info_about_product_basket">
+								<p id="product_name">Name of product</p>
+								<p id="price_product_basket">6000р</p>
+							</div>
+
+						</a>
+						<div class="description_size_bloc_basket">
+
+							<div class="description_product_basket">
+								<p id="description_in_basket">Описание: Брюки женские черного цвета на поясе</p>
+							</div>
+
+							<div class="size_product_basket">
+								<p id="size_in_basket">Размер: S</p>
+							</div>
+						</div>
+						<div class="count_in_basket">
+							<p id="count_in_basket_p">В корзине: 5</p>
+						</div>
+					</div>
+
+
+
+
+				</div>
+
+
+
+
+
+
+				<!--<div class="error_basket">
                     <h2>Ваша корзина пуста</h2>
                     <p id = "error_basket_sign_up">Зарегистрируйтесь, чтобы сохранить выбранные товары или получить доступ 
                     к уже сохраненным товарам в Вашей корзине. </p>
                     <div id="registration_link">
 						<a href="start_session.html">Войти</a>
 					</div>
-                </div>
+                </div>-->
         	</div>
         </div>
 	</div>
 </body>
+<script src = "/js/basket.js"></script>
 </html>
