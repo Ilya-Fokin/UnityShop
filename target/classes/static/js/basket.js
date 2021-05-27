@@ -12,23 +12,15 @@ function addToBasket() {
 
         success: function (message) {
             console.log(message);
+            $("#msg").text(message);
+            show();
 
         },
         error: function (message_error) {
             console.log(message_error);
-
+            $("#msg").text(message_error);
+            show();
         }
     })
 }
 
-$(document).ready(function () {
-    $.get("/get_all_product_basket", function (data) {
-        let listProducts = $(".list_products");
-
-        let sum = data[0].price + 500;
-
-        console.log(sum);
-    })
-
-
-})

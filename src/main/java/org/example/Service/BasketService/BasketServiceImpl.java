@@ -1,11 +1,14 @@
 package org.example.Service.BasketService;
 
 import org.example.Domains.Basket;
+import org.example.Domains.Size;
 import org.example.Repository.BasketRepo;
 import org.example.Repository.ProductRepo;
+import org.example.Repository.SizeRepo;
 import org.example.Repository.UserRepo;
 import org.example.Service.ProductServices.ProductService;
 import org.example.Service.ProductSizeService.ProductSizeService;
+import org.example.Service.SizeService.SizeService;
 import org.example.Service.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +27,9 @@ public class BasketServiceImpl implements BasketService {
     private UserService userService;
 
     @Autowired
+    private SizeRepo sizeRepo;
+
+    @Autowired
     private ProductSizeService productSizeService;
 
     @Override
@@ -32,35 +38,40 @@ public class BasketServiceImpl implements BasketService {
 
         if (userService.findById(userId)) {
             if (productService.findById(productId)) {
+                if (sizeRepo.findById(sizeId).isPresent()) {
+                    Size size = sizeRepo.findById(sizeId).get();
 
-                if (checkBasket(userId, productId)) {
-                    basket = basketRepo.findByUserIdAndProductId(userId, productId);
-                    int count = basket.getCount();
-                    int newCount = count + 1;
-                    basket.setCount(newCount);
+                    if (checkBasket(userId, productId, size.getName())) {
+                        basket = basketRepo.findByUserIdAndProductIdAndSize(userId, productId, size.getName());
+                        int count = basket.getCount();
+                        int newCount = count + 1;
+                        basket.setCount(newCount);
+
+                        if (productSizeService.reduceProductCount(productId, sizeId)) {
+                            basketRepo.save(basket);
+                            return "Добавлено в Вашу корзину";
+                        } else return "Не удалось удалить одну позицию на складе";
+                    } else
+
+                    basket.setProductId(productId);
+                    basket.setUserId(userId);
+                    basket.setCount(1);
+                    basket.setSize(size.getName());
 
                     if (productSizeService.reduceProductCount(productId, sizeId)) {
                         basketRepo.save(basket);
                         return "Добавлено в Вашу корзину";
-                    } else return "Не удалось удалить одну позицию на складе";
-                } else
+                    } else return "Размер распродан";
 
-                basket.setProductId(productId);
-                basket.setUserId(userId);
-                basket.setCount(1);
-
-                if (productSizeService.reduceProductCount(productId, sizeId)) {
-                    basketRepo.save(basket);
-                    return "Добавлено в Вашу корзину";
-                } else return "Не удалось удалить одну позицию на складе";
+                } else return "Размер не найден";
             } else
                 return "Продукт не найден";
         } else return "Пользователь не найден";
     }
 
     @Override
-    public Boolean checkBasket(Long userId, Long productId) {
-        Basket basket = basketRepo.findByUserIdAndProductId(userId, productId);
+    public Boolean checkBasket(Long userId, Long productId, String size) {
+        Basket basket = basketRepo.findByUserIdAndProductIdAndSize(userId, productId, size);
 
         if (basket == null) {
             return false;

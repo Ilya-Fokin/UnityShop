@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface BasketRepo extends CrudRepository<Basket, Long> {
     List<Basket> findByUserId(Long id);
-    Basket findByUserIdAndProductId(Long userId, Long productId);
+    Basket findByUserIdAndProductIdAndSize(Long userId, Long productId, String size);
     List<Basket> findAllByUserId(Long id);
 }

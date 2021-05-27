@@ -13,7 +13,14 @@ public class SizeServiceImpl implements SizeService{
     @Override
     public Long getSizeId(String name) {
         Size size = sizeRepo.findByName(name);
-        Long id = size.getId();
-        return id;
+        if (size != null) {
+            Long id = size.getId();
+            if (id != null) {
+                return id;
+            } else
+                return null;
+        }else
+            return null;
+
     }
 }

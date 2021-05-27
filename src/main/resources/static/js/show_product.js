@@ -17,7 +17,7 @@ $(document).ready(function () {
 
         let src = srcDB.replace("C:\\fakepath\\", "/Images/Product/");
 
-        console.log(nameDB, src);
+        console.log(nameDB, src, priceDB);
 
         let image = $('<img src="' + src + '">');
         let description = $('<p id="description">' + descriptionDB + '</p>');

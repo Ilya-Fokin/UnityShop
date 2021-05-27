@@ -52,31 +52,29 @@ public class BasketController {
 
         Long sizeId = sizeService.getSizeId(size);
 
-       return basketService.addProductInBasket(user.getId(), productId, sizeId);
+        if (sizeId != null) {
+            return basketService.addProductInBasket(user.getId(), productId, sizeId);
+        } else return "Выберете размер из списка";
     }
 
-    @GetMapping("/get_all_product_basket")
-    public List<Product> getAllProductInBasketById() {
+    @GetMapping("/get_all_basket")
+    public List<Basket> getAllBasketById() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findByUsername(auth.getName());
-        List<Product> products = new ArrayList<>();
+        List<Basket> baskets = new ArrayList<>();
 
         if (user != null) {
-            Long id =  user.getId();
+            Long id = user.getId();
 
-            List<Basket> baskets = basketService.getAllByUserId(id);
-            if (baskets != null) {
-                for (Basket basket : baskets) {
-                    Long idProduct = basket.getProductId();
-                    if (productRepo.findById(idProduct).isPresent()) {
-                        Product product = productRepo.findById(idProduct).get();
-                        products.add(product);
-                    }
-                }
-                return products;
-            }else return null;
-        } else
-            return null;
-
+            if (id != null) {
+                baskets = basketService.getAllByUserId(id);
+                if (baskets != null) {
+                    return baskets;
+                } else
+                    return null;
+            } else
+                return null;
+            } else
+                return null;
     }
 }

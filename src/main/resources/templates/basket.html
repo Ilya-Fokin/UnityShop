@@ -10,14 +10,14 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
 	<script src = "/js/jquery-3.0.0.min.js"></script>
 	<title>UnityShop</title>
-	<link rel="icon" type="image/png" href="../ISLAM.jpg">
+	<link rel="icon" type="image/png" href="/ISLAM.jpg">
 </head>
 <body>
     
 		<div class="header">
 			<div class="logo">
 				<a class="BackToMain" href="/">
-					<img src="../static/Изображения/Icons/Unity.jpg" width="288" height="150" hspace="40.5">
+					<img src="/Images/Icons/Unity.jpg" width="288" height="150" hspace="40.5">
 				</a>
 			</div>
 
@@ -98,8 +98,8 @@
  
 
 			<nav class="menu">
-				<a class="menu_user" href="/basket"><img src="../static/Изображения/Icons/Корзина.png" width="24" height="24"></a>
-				<a class="menu_user" href="/account"><img src="../static/Изображения/Icons/Профиль2.png" width="30" height="24"></a>
+				<a class="menu_user" href="/basket"><img src="/Images/Icons/Корзина.png" width="24" height="24"></a>
+				<a class="menu_user" href="/account"><img src="/Images/Icons/Профиль2.png" width="30" height="24"></a>
 			</nav>
 		</div>
 
@@ -107,14 +107,25 @@
         	<div class="basket_block">
 
 				<div class="header_basket">
-					<h1>Корзина</h1>
-					<p id="sum">Итого: 6000р</p>
+					<!--<h1>Корзина</h1>
+					<p id="sum"></p>
+					<button class="edit_basket">Редактировать</button>-->
+
+					<div class="left_header">
+						<h1>Корзина</h1>
+						<p id="sum"></p>
+					</div>
+
+					<div class="right_header">
+						<button class="edit_basket" onclick="editBasket()">Редактировать</button>
+
+					</div>
 				</div>
 
 
 				<div class="list_products">
 
-					<div class="product_in_basket">
+					<!--<div class="product_in_basket">
 						<a href="#" class="image_info_block">
 							<div class="image_product_in_basket">
 								<img src="../Static/Images/Product/9e813034df741c5b621228323bec7467.jpg">
@@ -137,8 +148,11 @@
 						</div>
 						<div class="count_in_basket">
 							<p id="count_in_basket_p">В корзине: 5</p>
+							<input type="number" id="count_product_input" placeholder="Кол-во">
+							<button type="submit" id="change_count_product">Обновить</button>
 						</div>
-					</div>
+
+					</div>-->
 
 
 
@@ -149,18 +163,18 @@
 
 
 
-
-				<!--<div class="error_basket">
-                    <h2>Ваша корзина пуста</h2>
-                    <p id = "error_basket_sign_up">Зарегистрируйтесь, чтобы сохранить выбранные товары или получить доступ 
-                    к уже сохраненным товарам в Вашей корзине. </p>
-                    <div id="registration_link">
-						<a href="start_session.html">Войти</a>
-					</div>
-                </div>-->
         	</div>
         </div>
 	</div>
+
+		<div id="edit_basket_block">
+			<h1>Редактирование корзины</h1>
+
+			<div class="list_products_in_basket">
+
+
+			</div>
+		</div>
 </body>
-<script src = "/js/basket.js"></script>
+<script src = "/js/product_basket.js"></script>
 </html>

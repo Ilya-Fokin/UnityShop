@@ -18,6 +18,9 @@ public class Basket {
     @Column(name = "count")
     private int count;
 
+    @Column(name = "size")
+    private String size;
+
     public Basket() {}
 
     public Basket(Long userId, Long productId, User user) {
@@ -55,5 +58,13 @@ public class Basket {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 }

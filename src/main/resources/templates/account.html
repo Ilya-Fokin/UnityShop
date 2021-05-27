@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-	<script src="../static/js/jquery-3.0.0.min.js"></script>
+	<script src="/js/jquery-3.0.0.min.js"></script>
 	<title>UnityShop</title>
 	<link rel="icon" type="image/png" href="ISLAM.jpg">
 </head>
@@ -112,10 +112,12 @@
                     <a href="/basket">1. Корзина</a>
                     <a href="#">2. Избранное</a>
                     <a href="#">3. Мои заказы</a>
+
+					<button id="logout_button_account" type="submit" onclick="logoout()">Выйти</button>
                 </div>
 
 				<div class="logout_block">
-					<button id="logout_button" name="logout">Выйти</button>
+					<button id="logout_button" name="logout" onclick="logout()">Выйти</button>
 				</div>
             </div>
 		</div>
@@ -124,5 +126,5 @@
 	
 </div>
 </body>
-<script src="../static/js/JavaScript.js"></script>
+<script src="/js/JavaScript.js"></script>
 </html>
