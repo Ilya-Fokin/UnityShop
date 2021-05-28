@@ -57,6 +57,22 @@ public class BasketController {
         } else return "Выберете размер из списка";
     }
 
+    @PostMapping("/delete_product_in_basket/{id}/{size}")
+    public String deleteProductInBasket(@PathVariable(name = "id") Long productId, @PathVariable(name = "size") String size) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findByUsername(auth.getName());
+
+        if (user == null) {
+            return "Необходима авторизация";
+        }
+
+        Long sizeId = sizeService.getSizeId(size);
+
+        if (sizeId != null) {
+            return basketService.deleteProductInBasket(user.getId(), productId, sizeId);
+        } else return "Выберете размер из списка";
+    }
+
     @GetMapping("/get_all_basket")
     public List<Basket> getAllBasketById() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

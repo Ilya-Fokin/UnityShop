@@ -119,7 +119,7 @@ function addSeller() {
     })
 }
 
-function logoout() {
+function logout() {
     $(location).attr("href", "/logout");
 }
 

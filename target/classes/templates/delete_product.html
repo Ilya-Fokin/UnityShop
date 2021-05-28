@@ -64,27 +64,7 @@
         </ul>
 
       </li>
-      <li class="main_list_cataloge">
-        <a href="#">Дети</a>
 
-        <ul class="sub_cataloge">
-          <li class="sub_list_cataloge">
-            <a href="#">Куртки</a>
-          </li>
-          <li class="sub_list_cataloge">
-            <a href="#">Худи</a>
-          </li>
-          <li class="sub_list_cataloge">
-            <a href="#">Футболки</a>
-          </li>
-          <li class="sub_list_cataloge">
-            <a href="#">Брюки</a>
-          </li>
-          <li class="sub_list_cataloge">
-            <a href="#">Аксессуары</a>
-          </li>
-        </ul>
-      </li>
 
       <li class="main_list_cataloge">
         <a href="/photo_album">Фотоальбом</a>
@@ -104,6 +84,7 @@
     <h2>Удалить товар</h2>
     <form id="delete_product_from" onsubmit="return false">
       <p><input id="name_product" type="text" name="name" placeholder="Введите название товара" required></p>
+      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
       <button id="delete_product_button" onclick="deleteProduct()">Удалить</button>
     </form>
     <div class="info_msg" id="info_msg_id"></div>

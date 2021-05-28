@@ -82,4 +82,25 @@ public class BasketServiceImpl implements BasketService {
     public List<Basket> getAllByUserId(Long id) {
         return basketRepo.findAllByUserId(id);
     }
+
+    @Override
+    public String deleteProductInBasket(Long userId, Long productId, Long sizeId) {
+        Size size = sizeRepo.findById(sizeId).get();
+        Basket basket = basketRepo.findByUserIdAndProductIdAndSize(userId, productId, size.getName());
+        int count = 0;
+        if (basket != null) {
+            count = basket.getCount();
+            if (count == 1) {
+                basketRepo.delete(basket);
+                productSizeService.addCountProductSize(productId, sizeId);
+                return "Товар удален из корзины";
+            } else
+               count = basket.getCount();
+               count = count - 1;
+               basket.setCount(count);
+               basketRepo.save(basket);
+               return "Товар удален из корзины в одном экземпляре";
+
+        } else return "Данного товара нет в вашей корзине";
+    }
 }

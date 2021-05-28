@@ -24,7 +24,7 @@ $(document).ready(function () {
                     '<img src="' + srcImage + '">' +
                     '</div>' +
                     '<div class="info_about_product_basket">' +
-                    '<p class="product_name" id="product_name_basket">' + name + '</p>' +
+                    '<p class="product_name" id="product_name_basket_' + i + '">' + name + '</p>' +
                     '<p class="price_product_basket">' + price + 'р</p>' +
                     '</div>' +
                     '</a>' +
@@ -38,8 +38,6 @@ $(document).ready(function () {
                     '</div>' +
                     '<div class="count_in_basket">' +
                     '<p class="count_in_basket_p">В корзине: ' + data[i].count + '</p>' +
-                    '<input id="count_change_input" type="number" min="0" placeholder="Кол-во">' +
-                    '<button type="submit" id="change_count_product">Обновить</button>' +
                     '</div>' +
                     '</div>');
                 sum = sum + price;
@@ -48,6 +46,10 @@ $(document).ready(function () {
         })
     }
     })
+})
+
+$(document).on('click', function () {
+    console.log($(this).attr("id"));
 })
 
 

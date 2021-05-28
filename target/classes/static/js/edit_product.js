@@ -81,3 +81,54 @@ function deleteProduct() {
         }
     })
 }
+
+function searchProduct() {
+    let name = $("#search_input").val();
+    let jsonName = JSON.stringify({
+        'name' : name,
+    });
+    console.log(jsonName);
+
+    $.ajax({
+        url: "/search_product",
+        method: 'post',
+        data: jsonName,
+        dataType: "json",
+        contentType: "application/json; charset = utf-8",
+
+        success: function (product) {
+            console.log(product[0].price);
+
+            showAllProductsByName(product)
+        },
+        error: function (error_product) {
+            console.log(error_product);
+        }
+
+    })
+}
+
+function showAllProductsByName(product) {
+    var contentBlock = $('.content_zone');
+    contentBlock.empty();
+
+    for (let i = 0; i < product.length; i++) {
+        let url = "/product_page/" + product[i].id;
+        let src = product[i].image;
+        let replaceSrc = "/Images/Product/";
+        let newSrc = src.replace("C:\\fakepath\\", replaceSrc);
+
+        let productElem = $('<a href="' + url + '" class="product_block">' +
+            '<div class="image_block">' +
+            '<img src="' + newSrc + '">' +
+            '</div>' +
+            '<div class="product_details">' +
+            '<p id="product_name">' + product[i].name + '</p>' +
+            '<p id="price">' + product[i].price + 'руб.' +'</p>' +
+            '</div>' +
+            '</a>');
+
+        contentBlock.append(productElem);
+    }
+}
+

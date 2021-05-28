@@ -1,5 +1,6 @@
 package org.example.Controllers.EditProductController;
 
+import org.example.Domains.Product;
 import org.example.Domains.ProductSize;
 import org.example.Service.BasketService.BasketService;
 import org.example.Service.ProductServices.ProductService;
@@ -25,11 +26,6 @@ public class EditProductController {
 
     @Autowired
     private SizeService sizeService;
-
-
-
-    @Autowired
-    private BasketService basketService;
 
     @PostMapping("/add_product_item")
     public String addProduct(@RequestBody String product) throws JSONException {
@@ -84,5 +80,13 @@ public class EditProductController {
     public String deleteProduct(@PathVariable(name = "name") String nameProduct) {
         return productService.deleteProduct(nameProduct);
     }
+
+    @PostMapping("/edit_product/{name}/")
+    public String editProduct(@PathVariable(name = "name") String name) {
+        if (productService.findByName(name) != null) {
+            return "rbreb";
+        } else return null;
+    }
+
 
 }

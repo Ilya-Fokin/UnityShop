@@ -1,13 +1,15 @@
 package org.example.Controllers.EditProductController;
 
 import org.example.Domains.Product;
+import org.example.Repository.ProductRepo;
 import org.example.Service.ProductServices.ProductService;
 import org.example.Service.ProductSizeService.ProductSizeService;
 import org.example.Service.SizeService.SizeService;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.parameters.P;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class ShowProductsController {
 
     @Autowired
     private SizeService sizeService;
+
 
     @GetMapping("/get_all_products/{Chapter}/{Category}")
     public List<Product> showMensTShirts(@PathVariable(name = "Chapter") String chapter, @PathVariable(name = "Category") String category) {
@@ -67,5 +70,19 @@ public class ShowProductsController {
     @GetMapping("/get_product_by_id/{id}")
     public Product getProductById(@PathVariable(name = "id") Long id) {
         return productService.getProductById(id);
+    }
+
+    @GetMapping("/get_all_products_warehouse")
+    public List<Product> getWarehouse() {
+return null;
+    }
+
+    @PostMapping("/search_product")
+    public List<Product> searchProduct(@RequestBody String jsonName) throws JSONException {
+        JSONObject jsonObject = new JSONObject(jsonName);
+        String name = jsonObject.getString("name");
+        if (productService.findAllByNameContaining(name) != null) {
+            return productService.findAllByNameContaining(name);
+        } else return null;
     }
 }

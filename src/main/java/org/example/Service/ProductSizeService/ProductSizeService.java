@@ -10,4 +10,5 @@ public interface ProductSizeService {
     Boolean reduceProductCount(Long productId, Long sizeId);
     ProductSize findByProductIDAndSizeID(Long productId, Long sizeId);
     Boolean addProductCount(Long productId, Long sizeId);
+    Boolean addCountProductSize(Long productId, Long sizeId);
 }

@@ -74,6 +74,24 @@ public class ProductSizeServiceImpl implements ProductSizeService{
             return productSize;
         } else return null;
     }
+
+    @Override
+    public Boolean addCountProductSize(Long productId, Long sizeId) {
+        ProductSize productSize = productSizeRepo.findByProductIDAndSizeID(productId, sizeId);
+        int count = 0;
+        if (productSize == null) {
+            productSize.setCount(1);
+            productSize.setSizeID(sizeId);
+            productSize.setProductID(productId);
+            productSizeRepo.save(productSize);
+            return true;
+        } else
+            count = productSize.getCount();
+            count++;
+            productSize.setCount(count);
+            productSizeRepo.save(productSize);
+            return true;
+    }
 }
 
 

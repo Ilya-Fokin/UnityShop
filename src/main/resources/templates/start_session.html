@@ -65,27 +65,7 @@
 						</ul>
 
 					</li>
-					<li class="main_list_cataloge">
-						<a href="#">Дети</a>
 
-						<ul class="sub_cataloge">
-							<li class="sub_list_cataloge">
-								<a href="#">Куртки</a>
-							</li>
-							<li class="sub_list_cataloge">
-								<a href="#">Худи</a>
-							</li>
-							<li class="sub_list_cataloge">
-								<a href="#">Футболки</a>
-							</li>
-							<li class="sub_list_cataloge">
-								<a href="#">Брюки</a>
-							</li>
-							<li class="sub_list_cataloge">
-								<a href="#">Аксессуары</a>
-							</li>
-						</ul>
-					</li>
 
 					<li class="main_list_cataloge">
 						<a href="/photo_album">Фотоальбом</a>
@@ -108,6 +88,7 @@
 					<form id="sign_in_form" action="/sign_in_user" onsubmit="return false">
 						<p><input id="username_sign_in" type="text" name="username" placeholder="Логин" required></p>
 					    <p><input id="password_sign_in" type="password" name="password" placeholder="Пароль" required></p>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<button id="sign_in_button" onclick="signIn()">Войти</button>
 					</form>
 					<div class="info_msg" id="info_msg_id">Неправильно введены логин или пароль</div>

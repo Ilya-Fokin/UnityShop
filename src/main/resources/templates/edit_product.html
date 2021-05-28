@@ -42,28 +42,29 @@
                 </ul>
 
             </li>
-
             <li class="main_list_cataloge">
-                <a href="#">Дети</a>
+                <a href="#">Женщины</a>
 
                 <ul class="sub_cataloge">
                     <li class="sub_list_cataloge">
-                        <a href="#">Куртки</a>
+                        <a href="/Woomens/Jacket">Куртки</a>
                     </li>
                     <li class="sub_list_cataloge">
-                        <a href="#">Худи</a>
+                        <a href="/Woomens/Hoody">Худи</a>
                     </li>
                     <li class="sub_list_cataloge">
-                        <a href="#">Футболки</a>
+                        <a href="/Woomens/T-shirt">Футболки</a>
                     </li>
                     <li class="sub_list_cataloge">
-                        <a href="#">Брюки</a>
+                        <a href="/Woomens/Trousers">Брюки</a>
                     </li>
                     <li class="sub_list_cataloge">
-                        <a href="#">Аксессуары</a>
+                        <a href="/Woomens/Accessories">Аксессуары</a>
                     </li>
                 </ul>
+
             </li>
+
 
             <li class="main_list_cataloge">
                 <a href="/photo_album">Фотоальбом</a>
@@ -79,41 +80,16 @@
 
 
 <div class="containerMain">
-    <div class="content_zone">
-
-        <!---  <a href="#" class="product_block">
-              <div class="image_block">
-                <img src="../static/Images/Товары/hmgoepprod.jpg">
-              </div>
-
-              <div class="product_details">
-                <p id="product_name">Name product</p>
-                <p id="price">2500р</p>
-              </div>
-            </a>
-
-
-            <a href="#" class="product_block">
-              <div class="image_block">
-                image
-              </div>
-            </a>
-            <a href="#" class="product_block">
-              <div class="image_block">
-                image
-              </div>
-            </a>-->
-
-
-
-
-
-
-
+    <div id = "add_seller">
+        <h2>Поиск товаров: </h2>
+        <form id="add_seller_form" onsubmit="return false">
+            <p><input id="search_input" type="text" name="name" placeholder="Введите название товара:" required></p>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            <button id="search" onclick="searchProduct()">Поиск</button>
+        </form>
+        <div class="info_msg" id="info_msg_id"></div>
 
     </div>
-
-
 </div>
 
 </div>
@@ -122,5 +98,5 @@
     <button id="close_button" onclick="hide()">Закрыть</button>
 </div>
 </body>
-<script src="/js/mens_products_all.js"></script>
+<script src="/js/edit_product.js"></script>
 </html>

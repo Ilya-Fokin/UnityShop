@@ -465,7 +465,7 @@ button:hover{
 .count_in_basket{
 	background-color: #b6acac;
 	text-align: center;
-	padding-top: 15%;
+	padding-top: 18%;
 	width: 30%;
 }
 
@@ -880,10 +880,40 @@ select option{
 	padding-top: 5px;
 	overflow: hidden;
 }
-#add_to_basket_button{
+
+.basket_favorites-zone button{
 	width: 65%;
 	font-size: 18px;
 	border-radius: 0;
+}
+
+
+#delete_into_basket_button:hover{
+	background: #973A40;
+}
+
+.search_product_block{
+	width: 90%;
+	padding: 45px;
+	margin: 0 auto;
+	background: #343A40;
+	align-items: center;
+	text-align: center;
+	box-shadow: 5px 0 5px -5px rgba(0, 0, 0, .5);
+}
+
+.search_product_block input{
+	width: 45%;
+}
+
+.search_product_block button{
+	width: 15%;
+}
+
+.search_product_block .content_zone{
+	margin-top: 45px;
+	box-shadow: none;
+
 }
 
 

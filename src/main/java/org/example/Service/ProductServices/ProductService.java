@@ -13,4 +13,7 @@ public interface ProductService {
     Product findByCategoryAndChapter(String category, String chapter);
     Product getProductById(Long id);
     Boolean findById(Long id);
+    Product findByName(String name);
+    List<Product> findAllByName(String name);
+    List<Product> findAllByNameContaining(String name);
 }

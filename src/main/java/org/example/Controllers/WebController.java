@@ -61,6 +61,12 @@ public class WebController {
         return "add_seller";
     }
 
+    @GetMapping("/admin_account/warehouse_page")
+    public String allListProduct() {
+        return "warehouse_products";
+    }
+
+
     @GetMapping("/Mens/{category}")
     public String mensProductByCategory(@PathVariable(name = "category") String category) {
         return "mens_product_page";
@@ -69,6 +75,11 @@ public class WebController {
     @GetMapping("/Woomens/{category}")
     public String woomensProductByCategory(@PathVariable(name = "category") String category) {
         return "mens_product_page";
+    }
+
+    @GetMapping("/search_product_page")
+    public String searchPage() {
+        return "search_product";
     }
 
 

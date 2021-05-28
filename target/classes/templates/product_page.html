@@ -64,27 +64,7 @@
         </ul>
 
       </li>
-      <li class="main_list_cataloge">
-        <a href="#">Дети</a>
 
-        <ul class="sub_cataloge">
-          <li class="sub_list_cataloge">
-            <a href="#">Куртки</a>
-          </li>
-          <li class="sub_list_cataloge">
-            <a href="#">Худи</a>
-          </li>
-          <li class="sub_list_cataloge">
-            <a href="#">Футболки</a>
-          </li>
-          <li class="sub_list_cataloge">
-            <a href="#">Брюки</a>
-          </li>
-          <li class="sub_list_cataloge">
-            <a href="#">Аксессуары</a>
-          </li>
-        </ul>
-      </li>
 
       <li class="main_list_cataloge">
         <a href="/photo_album">Фотоальбом</a>
@@ -132,7 +112,9 @@
       </div>
 
       <div class="basket_favorites-zone">
-        <button type="button" id="add_to_basket_button" onclick="addToBasket()">Добавить в коризну</button>
+        <button type="button" id="add_to_basket_button" onclick="addToBasket()">Добавить в корзину</button><br>
+        <button type="button" id="delete_into_basket_button" onclick="deleteIntoBasket()">Удалить из корзины</button>
+        <button type="button" id="add_into_favorite_button" onclick="addIntoFavorite()">Добавить в избранное</button>
       </div>
 
 
@@ -152,4 +134,5 @@
 <script src="/js/JavaScript.js"></script>
 <script src="/js/show_product.js"></script>
 <script src="/js/basket.js"></script>
+<script src="/js/favorite.js"></script>
 </html>

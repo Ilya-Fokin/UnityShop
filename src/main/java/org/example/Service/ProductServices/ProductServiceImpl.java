@@ -100,4 +100,23 @@ public class ProductServiceImpl implements ProductService{
          } else
         return null;
     }
+
+    @Override
+    public Product findByName(String name) {
+        return productRepo.findByName(name);
+    }
+
+    @Override
+    public List<Product> findAllByName(String name) {
+         if (productRepo.findAllByName(name) != null)
+         {
+             return productRepo.findAllByName(name);
+         }
+        return null;
+    }
+
+    @Override
+    public List<Product> findAllByNameContaining(String name) {
+        return productRepo.findAllByNameContaining(name);
+    }
 }

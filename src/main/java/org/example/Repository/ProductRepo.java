@@ -13,4 +13,7 @@ public interface ProductRepo extends CrudRepository<Product, Long> {
     List<Product> findAllByCategoryAndChapter(String category, String chapter);
     Product findByCategoryAndChapter(String category, String chapter);
     Optional<Product> findById(Long id);
+    List<Product> findAllByName(String name);
+    List<Product> findAll();
+    List<Product> findAllByNameContaining(String name);
 }
