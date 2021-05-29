@@ -12,4 +12,5 @@ public interface UserService {
     Boolean findByUsernameAndPassword(String username, String password);
     Boolean updateUserRole(String username);
     Boolean findById(Long id);
+    String addMoney(Long id, int money);
 }

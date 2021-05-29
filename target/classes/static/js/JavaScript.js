@@ -13,8 +13,6 @@ function signUp() {
         'date' : date
     });
 
-    console.log(user);
-
     $.ajax({
         url: "/sign_up_user",
         method: "POST",
@@ -29,7 +27,7 @@ function signUp() {
         }
     })
 }
-
+//Показать-скрыть окно оповещения
 function hide() {
     $('.containerMain').css("filter", "none");
     $('.header').css("filter", "none");
@@ -42,11 +40,10 @@ function show() {
     $('#message_block').css("display", "block");
 }
 
-
+//Выход в аккаунт
 function signIn() {
     let form = $("#sign_in_form");
     let user = form.serialize();
-
 
     $.ajax({
         url: "/sign_in_user",
@@ -54,49 +51,18 @@ function signIn() {
         data: user,
 
         success: function (url) {
-
             $(location).attr("href", url);
         },
 
         error: function (msg) {
             console.log(msg);
             $('#info_msg_id').css("display", "block");
-
         }
     })
 }
 
-function validationForm() {
-    var error = 0;
-    let email = $("#email_field").val();
-    let username = $("#username_field").val();
-    let password = $("#password_field").val();
 
-    let out = $("#info_msg_valid");
-
-    if (password.length < 8 && password.length > 16) {
-        out.text("Пароль не должен быть короче 8 и длиннее 16 символов");
-        $('#info_msg_valid').css("display", "block");
-        error++;
-    }
-    if (!password.match(/[A-z]/)) {
-        out.text("Пароль должен включать в себя хотя бы 1 строчную букву");
-        $('#info_msg_valid').css("display", "block");
-        error++;
-    }
-    if (!password.match(/[A-Z]/)) {
-        out.text("Пароль должен включать в себя хотя бы 1 заглавную букву");
-        $('#info_msg_valid').css("display", "block");
-        error++;
-    }
-    if (!password.match(/[0-9]/)) {
-        out.text("Пароль должен включать в себя хотя бы 1 цифру");
-        $('#info_msg_valid').css("display", "block");
-        error++;
-    }
-
-}
-
+//Добавить продавца
 function addSeller() {
     let login = $("#username_field_add_seller").val();
 
@@ -119,7 +85,9 @@ function addSeller() {
     })
 }
 
+//Выход с аккаунта
 function logout() {
     $(location).attr("href", "/logout");
 }
+
 

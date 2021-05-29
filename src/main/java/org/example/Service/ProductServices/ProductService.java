@@ -16,4 +16,5 @@ public interface ProductService {
     Product findByName(String name);
     List<Product> findAllByName(String name);
     List<Product> findAllByNameContaining(String name);
+    Boolean editProduct(Long id, String name, String description, int price);
 }

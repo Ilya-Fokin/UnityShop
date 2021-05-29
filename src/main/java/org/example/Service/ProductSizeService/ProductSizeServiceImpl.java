@@ -13,12 +13,22 @@ public class ProductSizeServiceImpl implements ProductSizeService{
 
     @Override
     public Boolean createProductSize(Long productID, Long sizeID, int count) {
-        ProductSize productSize = new ProductSize();
-        productSize.setProductID(productID);
-        productSize.setSizeID(sizeID);
-        productSize.setCount(count);
-        productSizeRepo.save(productSize);
-        return null;
+
+        if (productSizeRepo.findByProductIDAndSizeID(productID, sizeID) == null) {
+            ProductSize productSize = new ProductSize();
+            productSize.setProductID(productID);
+            productSize.setSizeID(sizeID);
+            productSize.setCount(count);
+            productSizeRepo.save(productSize);
+            return true;
+        } else {
+            ProductSize productSize = productSizeRepo.findByProductIDAndSizeID(productID, sizeID);
+            productSize.setSizeID(sizeID);
+            productSize.setProductID(productID);
+            productSize.setCount(count);
+            productSizeRepo.save(productSize);
+            return true;
+        }
     }
 
     @Override

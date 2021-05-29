@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <title>UnityShop</title>
+  <script src="/js/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+<div class="header">
+  <div class="logo">
+    <a class="BackToMain" href="/">
+      <img src="/Images/Icons/Unity.jpg" width="288" height="150" hspace="40.5">
+    </a>
+  </div>
+
+  <nav class="cataloge">
+    <ul>
+      <li class="main_list_cataloge">
+        <a href="#">Мужчины</a>
+
+        <ul class="sub_cataloge">
+          <li class="sub_list_cataloge">
+            <a href="/Mens/Jacket">Куртки</a>
+          </li>
+          <li class="sub_list_cataloge">
+            <a href="/Mens/Hoody">Худи</a>
+          </li>
+          <li class="sub_list_cataloge">
+            <a href="/Mens/T-shirt">Футболки</a>
+          </li>
+          <li class="sub_list_cataloge">
+            <a href="/Mens/Trousers">Брюки</a>
+          </li>
+          <li class="sub_list_cataloge">
+            <a href="/Mens/Accessories">Аксессуары</a>
+          </li>
+        </ul>
+
+      </li>
+      <li class="main_list_cataloge">
+        <a href="#">Женщины</a>
+
+        <ul class="sub_cataloge">
+          <li class="sub_list_cataloge">
+            <a href="/Woomens/Jacket">Куртки</a>
+          </li>
+          <li class="sub_list_cataloge">
+            <a href="/Woomens/Hoody">Худи</a>
+          </li>
+          <li class="sub_list_cataloge">
+            <a href="/Woomens/T-shirt">Футболки</a>
+          </li>
+          <li class="sub_list_cataloge">
+            <a href="/Woomens/Trousers">Брюки</a>
+          </li>
+          <li class="sub_list_cataloge">
+            <a href="/Woomens/Accessories">Аксессуары</a>
+          </li>
+        </ul>
+
+      </li>
+
+      <li class="main_list_cataloge">
+        <a href="/photo_album">Фотоальбом</a>
+      </li>
+    </ul>
+  </nav>
+
+  <nav class="menu">
+    <a class="menu_user" href="/favorite"><img src="/Images/Icons/favorite.jpg" width="40" height="24"></a>
+    <a class="menu_user" href="/search_product_page"><img src="/Images/Icons/i.jpg" width="24" height="24"></a>
+    <a class="menu_user" href="/basket"><img src="/Images/Icons/Корзина.png" width="24" height="24"></a>
+    <a class="menu_user" href="/account"><img src="/Images/Icons/Профиль2.png" width="30" height="24"></a>
+  </nav>
+</div>
+
+
+<div class="containerMain">
+
+  <div class="personal_page">
+
+    <div id="personal_page_header">
+      <h3>Добавление товара</h3>
+    </div>
+
+    <form id="add_product_form" onsubmit="return false">
+
+      <div class="field_change">
+        <div class="title">
+          1. Изменить Название товара:
+        </div>
+        <div class="element">
+          <input type="text" id="name_input" name="name" placeholder="Введите название" required>
+        </div>
+      </div>
+
+
+      <div class="field_change">
+        <div class="title">
+          2. Изменить описание:
+        </div>
+        <div class="element">
+          <input type="text" id="description_input" name="description" placeholder="Введите описание">
+        </div>
+
+
+      </div>
+
+      <div class="field_change">
+        <div class="title">
+          3. Укажите размер и кол-во:
+        </div>
+        <div class="size_element_block">
+          <div class="title">
+            XS
+            <input type="number" class="xs_input" id="sizeXS" name="XS" placeholder="Кол-во" required>
+          </div>
+
+          <div class="title">
+            S
+            <input type="number" class="s_input" id="sizeS" name="S" placeholder="Кол-во" required>
+          </div>
+
+          <div class="title">
+            M
+            <input type="number" class="m_input" id="sizeM" name="M" placeholder="Кол-во" required>
+          </div>
+
+          <div class="title">
+            L
+            <input type="number" class="l_input" id="sizeL" name="L" placeholder="Кол-во" required>
+          </div>
+
+          <div class="title">
+            XL
+            <input type="number" class="XL_input" id="sizeXL" name="XL" placeholder="Кол-во" required>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="field_change">
+        <div class="title">
+          4. Изменить цену (если не хотите изменять, впишите "0"):
+        </div>
+        <div class="element">
+          <input type="number" min="0" id="price_input" name="price" placeholder="Введите цену">
+        </div>
+      </div>
+
+
+      <button type="submit" id="add_product_button" onclick="editProduct()">Изменить</button>
+    </form>
+
+    <div class="info_msg" id="info_msg_id"></div>
+  </div>
+</div>
+
+
+
+</div>
+</body>
+<script src="/js/edit_product.js"></script>
+</html>

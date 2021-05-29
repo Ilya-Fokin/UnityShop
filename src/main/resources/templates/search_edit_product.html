@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <title>UnityShop</title>
+    <link rel="icon" type="image/png" href="ISLAM.jpg">
+    <script src="/js/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <a class="BackToMain" href="/">
+            <img src="/Images/Icons/Unity.jpg" width="288" height="150" hspace="40.5">
+        </a>
+    </div>
+
+    <nav class="cataloge">
+        <ul>
+            <li class="main_list_cataloge">
+                <a href="#">Мужчины</a>
+
+                <ul class="sub_cataloge">
+                    <li class="sub_list_cataloge">
+                        <a href="/Mens/Jacket">Куртки</a>
+                    </li>
+                    <li class="sub_list_cataloge">
+                        <a href="/Mens/Hoody">Худи</a>
+                    </li>
+                    <li class="sub_list_cataloge">
+                        <a href="/Mens/T-shirt">Футболки</a>
+                    </li>
+                    <li class="sub_list_cataloge">
+                        <a href="/Mens/Trousers">Брюки</a>
+                    </li>
+                    <li class="sub_list_cataloge">
+                        <a href="/Mens/Accessories">Аксессуары</a>
+                    </li>
+                </ul>
+
+            </li>
+            <li class="main_list_cataloge">
+                <a href="#">Женщины</a>
+
+                <ul class="sub_cataloge">
+                    <li class="sub_list_cataloge">
+                        <a href="/Woomens/Jacket">Куртки</a>
+                    </li>
+                    <li class="sub_list_cataloge">
+                        <a href="/Woomens/Hoody">Худи</a>
+                    </li>
+                    <li class="sub_list_cataloge">
+                        <a href="/Woomens/T-shirt">Футболки</a>
+                    </li>
+                    <li class="sub_list_cataloge">
+                        <a href="/Woomens/Trousers">Брюки</a>
+                    </li>
+                    <li class="sub_list_cataloge">
+                        <a href="/Woomens/Accessories">Аксессуары</a>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="main_list_cataloge">
+                <a href="/photo_album">Фотоальбом</a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav class="menu">
+        <a class="menu_user" href="/search_product_page"><img src="/Images/Icons/i.jpg" width="24" height="24"></a>
+        <a class="menu_user" href="/basket"><img src="/Images/Icons/Корзина.png" width="24" height="24"></a>
+        <a class="menu_user" href="/account"><img src="/Images/Icons/Профиль2.png" width="30" height="24"></a>
+    </nav>
+</div>
+
+<div class="containerMain">
+    <div class = "search_product_block">
+        <div class="header_search">
+            <h2>Поиск товаров: </h2>
+            <form id="add_seller_form" onsubmit="return false">
+                <p><input id="search_input" type="text" name="name" placeholder="Введите название товара:" required></p>
+                <button id="search" onclick="searchProductForEdit()">Поиск</button>
+            </form>
+        </div>
+
+        <div class="content_zone">
+
+        </div>
+
+    </div>
+</div>
+
+</div>
+<div id="message_block">
+    <p id="msg"></p>
+    <button id="close_button" onclick="hide()">Закрыть</button>
+</div>
+</body>
+<script src="/js/edit_product.js"></script>
+</html>

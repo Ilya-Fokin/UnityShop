@@ -33,18 +33,29 @@ public class FavoritesServiceImpl implements FavoritesService{
     }
 
     @Override
-    public Boolean addFavorite(Long userId, Long productId) {
+    public String addFavorite(Long userId, Long productId) {
+        Favorites favorites = new Favorites();
+
         if (userService.findById(userId)) {
             if (productService.findById(productId)) {
-                if (!checkFavorite(userId, productId)) {
-                    Favorites favorites = new Favorites();
-                    favorites.setUserId(userId);
-                    favorites.setProductId(productId);
-                    favoritesRepo.save(favorites);
+                if (!checkFavorite(userId,productId)) {
+                    Favorites favorites1 = new Favorites();
+                    favorites1.setUserId(userId);
+                    favorites1.setProductId(productId);
+                    favoritesRepo.save(favorites1);
+                    return "Товар добавлен в избранное";
+                } else
+                    favorites = favoritesRepo.findByUserIdAndProductId(userId, productId);
+                    favoritesRepo.delete(favorites);
+                return "Товар удален из избранного";
+            } else return "Товар не найден";
+        } else return "Пользователь не найден";
+    }
 
-                    return true;
-                } else return false;
-            } else return false;
-        } else return false;
+    @Override
+    public List<Favorites> getAllFavoritesByUserId(Long userId) {
+        if (favoritesRepo.findAllByUserId(userId) != null) {
+            return favoritesRepo.findAllByUserId(userId);
+        } else return null;
     }
 }

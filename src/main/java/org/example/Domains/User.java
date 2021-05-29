@@ -25,6 +25,9 @@ public class User {
     @Column(name = "date")
     private String date;
 
+    @Column(name = "money")
+    private int money;
+
     private String activationCode;
 
     @ManyToMany
@@ -96,5 +99,13 @@ public class User {
     }
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 }

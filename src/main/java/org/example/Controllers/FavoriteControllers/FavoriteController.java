@@ -8,7 +8,6 @@ public class FavoriteController {
 
     @GetMapping("/favorite")
     public String favoritePage() {
-        return null;
-
+        return "favorite_page";
     }
 }

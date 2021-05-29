@@ -28,4 +28,9 @@ public class LoginController {
     public String adminPage() {
         return "admin_account";
     }
+
+    @GetMapping("/seller_account")
+    public String sellerAccountPage() {
+        return "seller_account";
+    }
 }

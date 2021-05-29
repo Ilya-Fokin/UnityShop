@@ -135,4 +135,17 @@ public class UserServiceImpl implements UserService{
             return true;
         } else return false;
     }
+
+    @Override
+    public String addMoney(Long id, int money) {
+        User user = userRepo.findById(id).get();
+        if (user != null) {
+            int sum = user.getMoney();
+            user.setMoney(sum + money);
+            userRepo.save(user);
+            return "Баланс пополнен";
+        } else return "Пользователь не найден";
+    }
+
+
 }

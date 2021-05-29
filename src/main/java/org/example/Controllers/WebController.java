@@ -24,6 +24,7 @@ public class WebController {
 
     @GetMapping("/account")
     public String accountPage() {
+        //Проверка авторизованного пользователя
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         boolean hasAdmin = auth.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("admin"));
         boolean hasSeller = auth.getAuthorities().stream().anyMatch(r -> r.getAuthority().equals("seller"));
@@ -34,11 +35,6 @@ public class WebController {
                 return "redirect:/seller_account";
             } else
             return "account";
-    }
-
-    @GetMapping("/seller_account")
-    public String sellerAccountPage() {
-        return "seller_account";
     }
 
     @GetMapping("/basket")
@@ -54,16 +50,6 @@ public class WebController {
     @GetMapping("/photo_album")
     public String photoAlbumPage() {
         return "photo_album";
-    }
-
-    @GetMapping("/admin_account/add_seller_page")
-    public String addSellerPage() {
-        return "add_seller";
-    }
-
-    @GetMapping("/admin_account/warehouse_page")
-    public String allListProduct() {
-        return "warehouse_products";
     }
 
 
@@ -88,4 +74,8 @@ public class WebController {
         return "product_page";
     }
 
+    @GetMapping("/add_money")
+    public String addMoneyPage() {
+        return "add_money";
+    }
 }

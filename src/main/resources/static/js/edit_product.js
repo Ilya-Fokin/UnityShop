@@ -11,12 +11,6 @@ function addProduct() {
     var sizeL = $("#sizeL").val();
     var sizeXL = $("#sizeXL").val();
 
-    console.log(sizeXS + sizeS + sizeM + sizeL + sizeXL);
-
-    if((sizeXS + sizeS + sizeM + sizeL + sizeXL) === 0) {
-        console.log("Вы не можете добавить товар, не указав размеры");
-    } 
-
     let price = $("#price_input").val();
 
     let product = JSON.stringify({
@@ -33,7 +27,7 @@ function addProduct() {
         'XL' : sizeXL,
     });
 
-    console.log(product);
+
 
     $.ajax({
         url: '/add_product_item',
@@ -60,8 +54,6 @@ function addProduct() {
 function deleteProduct() {
     let name = $("#name_product").val();
 
-    console.log("Удалить товар: " + name + "...");
-
     $.ajax({
         url: '/delete_product_item/' + name,
         method: 'POST',
@@ -87,7 +79,6 @@ function searchProduct() {
     let jsonName = JSON.stringify({
         'name' : name,
     });
-    console.log(jsonName);
 
     $.ajax({
         url: "/search_product",
@@ -97,14 +88,11 @@ function searchProduct() {
         contentType: "application/json; charset = utf-8",
 
         success: function (product) {
-            console.log(product[0].price);
-
             showAllProductsByName(product)
         },
         error: function (error_product) {
             console.log(error_product);
         }
-
     })
 }
 
@@ -130,5 +118,99 @@ function showAllProductsByName(product) {
 
         contentBlock.append(productElem);
     }
+}
+
+function searchProductForEdit() {
+    let name = $("#search_input").val();
+    let jsonName = JSON.stringify({
+        'name' : name,
+    });
+
+    $.ajax({
+        url: "/search_product",
+        method: 'post',
+        data: jsonName,
+        dataType: "json",
+        contentType: "application/json; charset = utf-8",
+
+        success: function (product) {
+            showAllProductsForEdit(product)
+        },
+        error: function (error_product) {
+            console.log(error_product);
+        }
+    })
+}
+
+function showAllProductsForEdit(product) {
+    var contentBlock = $('.content_zone');
+    contentBlock.empty();
+
+    for (let i = 0; i < product.length; i++) {
+        let url = "/edit_product_page/" + product[i].id;
+        let src = product[i].image;
+        let replaceSrc = "/Images/Product/";
+        let newSrc = src.replace("C:\\fakepath\\", replaceSrc);
+
+        let productElem = $('<a href="' + url + '" class="product_block">' +
+            '<div class="image_block">' +
+            '<img src="' + newSrc + '">' +
+            '</div>' +
+            '<div class="product_details">' +
+            '<p id="product_name">' + product[i].name + '</p>' +
+            '<p id="price">' + product[i].price + 'руб.' +'</p>' +
+            '</div>' +
+            '</a>');
+
+        contentBlock.append(productElem);
+    }
+}
+
+
+function editProduct() {
+    let currentUrl = $(location).attr('href');
+    let id = currentUrl.replace("http://localhost:8080/edit_product_page/", "")
+    let nameProduct = $("#name_input").val();
+    let description = $("#description_input").val();
+
+    var sizeXS = $("#sizeXS").val();
+    var sizeS = $("#sizeS").val();
+    var sizeM = $("#sizeM").val();
+    var sizeL = $("#sizeL").val();
+    var sizeXL = $("#sizeXL").val();
+
+    let price = $("#price_input").val();
+
+    let product = JSON.stringify({
+        'id' : id,
+        'name' : nameProduct,
+        'description' : description,
+        'price' : price,
+        'XS' : sizeXS,
+        'S' : sizeS,
+        'M' : sizeM,
+        'L' : sizeL,
+        'XL' : sizeXL,
+    });
+
+    $.ajax({
+        url: '/edit_product_item',
+        method: 'POST',
+        contentType: 'application/json',
+        dataType: 'text',
+        data: product,
+
+        success: function(message) {
+            console.log(message);
+            $("#info_msg_id").text(message);
+            $('#info_msg_id').css("display", "block");
+        },
+
+        error: function(message_error) {
+            console.log(message_error);
+            $("#info_msg_id").text("Возникла проблема при добавлении товара, убедитесь, что в магазине нет продукта с таким же названием");
+            $('#info_msg_id').css("display", "block");
+        }
+    })
 }
 

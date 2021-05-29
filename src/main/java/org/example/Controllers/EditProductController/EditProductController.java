@@ -31,6 +31,7 @@ public class EditProductController {
     public String addProduct(@RequestBody String product) throws JSONException {
         Long productId = null;
         Long sizeId = null;
+
         JSONObject jsonObject = new JSONObject(product);
 
         String name = jsonObject.getString("name");
@@ -88,5 +89,49 @@ public class EditProductController {
         } else return null;
     }
 
+    @PostMapping("/edit_product_item")
+    public String editProductItem(@RequestBody String response) throws JSONException {
+        Long sizeId = null;
+        JSONObject jsonObject = new JSONObject(response);
 
+        Long productId = jsonObject.getLong("id");
+        String name = jsonObject.getString("name");
+        String description = jsonObject.getString("description");
+        int price = jsonObject.getInt("price");
+
+        int countXS = jsonObject.getInt("XS");
+        int countS = jsonObject.getInt("S");
+        int countM = jsonObject.getInt("M");
+        int countL = jsonObject.getInt("L");
+        int countXL = jsonObject.getInt("XL");
+
+        if (productService.editProduct(productId, name, description, price)) {
+            if (productService.getProductId(name) != null) {
+                productId = productService.getProductId(name);
+
+                if (countXS != 0) {
+                    sizeId = sizeService.getSizeId("XS");
+                    productSizeService.createProductSize(productId, sizeId, countXS);
+                }
+                if (countS != 0) {
+                    sizeId = sizeService.getSizeId("S");
+                    productSizeService.createProductSize(productId, sizeId, countS);
+                }
+                if (countM != 0) {
+                    sizeId = sizeService.getSizeId("M");
+                    productSizeService.createProductSize(productId, sizeId, countM);
+                }
+                if (countL != 0) {
+                    sizeId = sizeService.getSizeId("L");
+                    productSizeService.createProductSize(productId, sizeId, countL);
+                }
+                if (countXL != 0) {
+                    sizeId = sizeService.getSizeId("XL");
+                    productSizeService.createProductSize(productId, sizeId, countXL);
+                }
+
+                return "Товар изменен";
+            } else return "Не удалось найти идентификатор товара";
+        } else return "не удалось изменить данные";
+    }
 }

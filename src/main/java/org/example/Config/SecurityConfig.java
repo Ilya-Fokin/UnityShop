@@ -22,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/account/**").authenticated()
                 .antMatchers("/basket/**").authenticated()
+                .antMatchers("/favorite/**").authenticated()
                 .antMatchers("/edit_product/**").authenticated()
                 .antMatchers("/seller_account/**").hasAuthority("seller")
                 .antMatchers("/admin_account/**").hasAuthority("admin")
@@ -32,7 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/start_session")
 
-
                 .and()
                 .formLogin()
                 .loginPage("/start_session")
@@ -41,7 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureForwardUrl("/login?error");
 
         http.csrf().disable();
-
     }
 
     @Override

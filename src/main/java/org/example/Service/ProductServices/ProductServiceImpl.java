@@ -31,7 +31,6 @@ public class ProductServiceImpl implements ProductService{
             product.setChapter(chapter);
 
             productRepo.save(product);
-
             return true;
         }
         return null;
@@ -118,5 +117,34 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<Product> findAllByNameContaining(String name) {
         return productRepo.findAllByNameContaining(name);
+    }
+
+    @Override
+    public Boolean editProduct(Long id, String name, String description, int price) {
+        if (findById(id)) {
+            Product product = productRepo.findById(id).get();
+            if (name != null) {
+                product.setName(name);
+                if (description != null) {
+                    product.setDescription(description);
+                    if (price != 0) {
+                        product.setPrice(price);
+                    }
+                }
+            } else
+
+            if (description != null) {
+                product.setDescription(description);
+                if (price != 0) {
+                    product.setPrice(price);
+                }
+            } else
+
+            if (price != 0) {
+                product.setPrice(price);
+            }
+            productRepo.save(product);
+            return true;
+        } else return false;
     }
 }

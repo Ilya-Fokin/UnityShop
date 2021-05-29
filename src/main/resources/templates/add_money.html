@@ -73,6 +73,8 @@
     </nav>
 
     <nav class="menu">
+        <a class="menu_user" href="/favorite"><img src="/Images/Icons/favorite.jpg" width="40" height="24"></a>
+        <a class="menu_user" href="/search_product_page"><img src="/Images/Icons/i.jpg" width="24" height="24"></a>
         <a class="menu_user" href="/basket"><img src="/Images/Icons/Корзина.png" width="24" height="24"></a>
         <a class="menu_user" href="/account"><img src="/Images/Icons/Профиль2.png" width="30" height="24"></a>
     </nav>
@@ -83,9 +85,8 @@
     <div id = "add_seller">
         <h2>Поиск товаров: </h2>
         <form id="add_seller_form" onsubmit="return false">
-            <p><input id="search_input" type="text" name="name" placeholder="Введите название товара:" required></p>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-            <button id="search" onclick="searchProduct()">Поиск</button>
+            <p><input id="search_input" type="number" min="0" name="sum" placeholder="Введите сумму:" required></p>
+            <button id="search" onclick="addMoney()">Пополнить</button>
         </form>
         <div class="info_msg" id="info_msg_id"></div>
 
@@ -98,5 +99,5 @@
     <button id="close_button" onclick="hide()">Закрыть</button>
 </div>
 </body>
-<script src="/js/edit_product.js"></script>
+<script src="/js/basket.js"></script>
 </html>

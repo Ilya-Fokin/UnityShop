@@ -73,12 +73,13 @@
 			</nav>
 
 			<nav class="menu">
+				<a class="menu_user" href="/favorite"><img src="/Images/Icons/favorite.jpg" width="40" height="24"></a>
+				<a class="menu_user" href="/search_product_page"><img src="/Images/Icons/i.jpg" width="24" height="24"></a>
 				<a class="menu_user" href="/basket"><img src="Images/Icons/Корзина.png" width="24" height="24"></a>
 				<a class="menu_user" href="/account"><img src="Images/Icons/Профиль2.png" width="30" height="24"></a>
 			</nav>
 		</div>
 
-	
 		<div class="containerMain">
 			<div id = "sign_up_form_registration">
                 <h2>Регистрация</h2>
@@ -89,13 +90,12 @@
                     <p><input id="password_field" type="password" name="password" placeholder="Пароль" required></p>
                     <p><input id="date_field" type="date" name="date" placeholder="Дата рождения" required></p>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                    <button id="sign_up_button" onclick="signUp()">Отправить</button>
+                    <button id="sign_up_button" onclick="signUp()">З</button>
                 </form>
 				<div class="info_msg" id="info_msg_valid"></div>
 
             </div>
 		</div>
-	
 </div>
 		<div id="message_block">
 			<p id="msg"></p>

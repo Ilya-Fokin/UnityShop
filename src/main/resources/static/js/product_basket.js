@@ -1,12 +1,21 @@
 $(document).ready(function () {
+
+    var sum = 0;
+    //Выводим информацию о кол-ве денег
+    $.get("/get_money", function (count) {
+        let moneyBlock = $('.right_header');
+        let innerMoney = $('<p id="money">' + 'На счету: ' + count + 'р' + '</p>');
+        moneyBlock.prepend(innerMoney);
+    })
+
+    //Получаем и выводим все товары из корзины в бд
     $.get("/get_all_basket", function (data) {
         var listProducts = $(".list_products");
-        var sum = 0;
+
 
         for (let i = 0; i < data.length; i++) {
             var count = data[i].count;
             var productId = data[i].productId;
-            console.log(data[i].userId, productId, count, data[i].size);
 
             $.get("get_product_by_id/" + productId, function (product) {
                 let name = product.name;
@@ -15,8 +24,6 @@ $(document).ready(function () {
                 let image = product.image;
                 let srcImage = image.replace("C:\\fakepath\\", "/Images/Product/");
                 let url = "/product_page/" + product.id;
-
-                console.log(name, price,description);
 
                 var productElement = $('<div class="product_in_basket">' +
                     '<a href="' + url + '" class="image_info_block">' +
@@ -46,40 +53,55 @@ $(document).ready(function () {
         })
     }
     })
-})
-
-$(document).on('click', function () {
-    console.log($(this).attr("id"));
-})
 
 
-function editBasket() {
+    $(document).on('click', '#place_order', function () {
+        $.get("/get_money", function (money) {
+            if (money < sum) {
+                console.log("Недостаточно средств");
+                $("#msg").text("Недостаточно средств");
+                show();
+            } else {
 
-    $.get("/get_all_basket", function (data) {
-        var selectProducts = $(".list_products_in_basket");
-        var num;
+                $.ajax({
+                    url: "/create_order",
+                    method: 'post',
+                    dataType: 'text',
 
-        for (let i = 0; i < data.length; i++) {
-            num = i+1;
-            var count = data[i].count;
-            var productId = data[i].productId;
-            console.log(data[i].userId, productId, count, data[i].size);
+                    success: function (msg) {
+                        $("#msg").text(msg);
+                        show();
+                    },
 
-            $.get("get_product_by_id/" + productId, function (product) {
-                var name = product.name;
-                var price = product.price;
+                    error: function (error_msg) {
+                        $("#msg").text(error_msg);
+                        show();
+                    }
+                })
 
-                console.log(name, price);
-            })
-            var products = $('<p id="product_info_edit_basket">' + num + '. ' + name + ' <b>' + data[i].size + '</b>' + '<b>' + data[i].count + '</b>' + '</p>');
-            selectProducts.append(products);
-            console.log(num);
-        }
+            }
+
+        })
     })
+})
 
 
-    $("#edit_basket_block").css("display", "block");
-    console.log("ятут");
+
+function redirectAddMoney() {
+    $(location).attr('href', "/add_money");
+}
+
+
+function hide() {
+    $('.containerMain').css("filter", "none");
+    $('.header').css("filter", "none");
+    $('#message_block').css("display", "none");
+}
+
+function show() {
+    $('.containerMain').css("filter", "blur(10px)");
+    $('.header').css("filter", "blur(10px)");
+    $('#message_block').css("display", "block");
 }
 
 

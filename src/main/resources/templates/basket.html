@@ -78,6 +78,8 @@
  
 
 			<nav class="menu">
+				<a class="menu_user" href="/favorite"><img src="/Images/Icons/favorite.jpg" width="40" height="24"></a>
+				<a class="menu_user" href="/search_product_page"><img src="/Images/Icons/i.jpg" width="24" height="24"></a>
 				<a class="menu_user" href="/basket"><img src="/Images/Icons/Корзина.png" width="24" height="24"></a>
 				<a class="menu_user" href="/account"><img src="/Images/Icons/Профиль2.png" width="30" height="24"></a>
 			</nav>
@@ -97,7 +99,9 @@
 					</div>
 
 					<div class="right_header">
-						<button class="edit_basket" onclick="editBasket()">Редактировать</button>
+						<p id="money"></p>
+						<button class="basket_button" onclick="redirectAddMoney()">Пополнить</button>
+						<button class="basket_button" id="place_order">Оформить заказ</button>
 
 					</div>
 				</div>
@@ -138,22 +142,12 @@
 
 
 				</div>
-
-
-
-
-
         	</div>
         </div>
 	</div>
-
-		<div id="edit_basket_block">
-			<h1>Редактирование корзины</h1>
-
-			<div class="list_products_in_basket">
-
-
-			</div>
+		<div id="message_block">
+			<p id="msg"></p>
+			<button id="close_button" onclick="hide()">Закрыть</button>
 		</div>
 </body>
 <script src = "/js/product_basket.js"></script>

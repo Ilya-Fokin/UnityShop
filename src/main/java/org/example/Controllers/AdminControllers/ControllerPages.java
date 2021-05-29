@@ -15,4 +15,9 @@ public class ControllerPages {
         return "delete_product";
     }
 
+    @GetMapping("/admin_account/edit_product")
+    public String editProductPage() {
+        return "search_edit_product";
+    }
+
 }

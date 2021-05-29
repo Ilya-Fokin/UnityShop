@@ -11,24 +11,6 @@ import java.util.Properties;
 
 @Configuration
 public class MailConfig {
-   /* @Value("$(spring.mail.host)")
-    private String host;
-
-    @Value("$(spring.mail.port)")
-    private String port;
-
-    @Value("$(spring.mail.username)")
-    private String username;
-
-    @Value("$(spring.mail.password)")
-    private String password;
-
-    @Value("$(spring.mail.protocol)")
-    private String protocol;
-
-    @Value("$(mail.auth)")
-    private String debug;*/
-
     @Bean
     public JavaMailSender getMailSender() {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
@@ -45,9 +27,6 @@ public class MailConfig {
         property.put("mail.smtp.starttls.enable", "true");
         property.put("mail.smtp.ssl.enable", "true");
         property.put("mail.debug", "true");
-
-        /*property.setProperty("mail.transport.protocol", "smpts");
-        property.setProperty("mail.debug", debug);*/
 
         return javaMailSender;
     }

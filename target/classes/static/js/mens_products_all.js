@@ -1,9 +1,7 @@
 $(document).ready(function () {
     let contentBlock = $(".content_zone");
-
     let currentUrl = $(location).attr('href');
     let getUrl = currentUrl.replace("http://localhost:8080/", "/get_all_products/")
-   /* '/get_all_products/Мужчины/Футболки'*/
 
     $.get(getUrl, function (data) {
         for (let i = 0; i < data.length; i++) {
@@ -14,9 +12,6 @@ $(document).ready(function () {
 
             let replaceSrc = "/Images/Product/";
             let newSrc = src.replace("C:\\fakepath\\", replaceSrc);
-            //newSrc = newSrc.replace(/\s/g, '');
-
-            console.log(newSrc);
 
             let product = $('<a href="' + url + '" class="product_block">' +
                 '<div class="image_block">' +

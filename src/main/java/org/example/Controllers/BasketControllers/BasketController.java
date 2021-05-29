@@ -38,8 +38,6 @@ public class BasketController {
     @Autowired
     private BasketService basketService;
 
-    @Autowired
-    private ProductRepo productRepo;
 
     @PostMapping("/add_product_in_basket/{productId}/{size}")
     public String addProductInBasket(@PathVariable(name = "productId") Long productId, @PathVariable(name = "size") String size) {
@@ -92,5 +90,19 @@ public class BasketController {
                 return null;
             } else
                 return null;
+    }
+
+    @GetMapping("/get_money")
+    public int getMoneyUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findByUsername(auth.getName());
+        return user.getMoney();
+    }
+
+    @PostMapping("/add_money_user/{sum}")
+    public String addMoneyUser(@PathVariable(name = "sum") int sum) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findByUsername(auth.getName());
+        return userService.addMoney(user.getId(), sum);
     }
 }

@@ -14,4 +14,9 @@ public class SellerControllerPage {
     public String deleteProductSeller() {
         return "delete_product";
     }
+
+    @GetMapping("/seller_account/edit_product")
+    public String editProductPageSeller() {
+        return "search_edit_product";
+    }
 }

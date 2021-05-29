@@ -1,8 +1,6 @@
 $(document).ready(function () {
-
     let getUrl = $(location).attr('href');
     let url = getUrl.replace("http://localhost:8080/product_page/", "/get_product_by_id/");
-    console.log(url);
 
     let innerName = $('.product_name-zone');
     let innerImage = $('.image_zone_product_id');
@@ -17,8 +15,6 @@ $(document).ready(function () {
 
         let src = srcDB.replace("C:\\fakepath\\", "/Images/Product/");
 
-        console.log(nameDB, src, priceDB);
-
         let image = $('<img src="' + src + '">');
         let description = $('<p id="description">' + descriptionDB + '</p>');
         let price = $('<p id="price_product_id">Цена: ' + priceDB + 'руб</p>');
@@ -27,9 +23,5 @@ $(document).ready(function () {
         innerName.append(nameDB);
         innerPrice.append(price);
         innerDescription.append(description);
-
-
-
-
     })
 })
