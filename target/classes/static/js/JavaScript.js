@@ -13,6 +13,7 @@ function signUp() {
         'date' : date
     });
 
+
     $.ajax({
         url: "/sign_up_user",
         method: "POST",

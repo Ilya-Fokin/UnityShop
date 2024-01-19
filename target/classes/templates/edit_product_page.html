@@ -2,18 +2,15 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Разделы</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../Static/css/style.css">
-  <script src = "/js/jquery-3.0.0.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
   <title>UnityShop</title>
-  <link rel="icon" type="image/png" href="/ISLAM.jpg">
+  <script src="/js/jquery-3.0.0.min.js"></script>
 </head>
 <body>
-
 <div class="header">
   <div class="logo">
     <a class="BackToMain" href="/">
@@ -68,7 +65,6 @@
 
       </li>
 
-
       <li class="main_list_cataloge">
         <a href="/photo_album">Фотоальбом</a>
       </li>
@@ -83,54 +79,91 @@
   </nav>
 </div>
 
+
 <div class="containerMain">
-  <div class="basket_block">
 
-    <div class="header_basket">
-      <div class="left_header">
-        <h1>Склад товаров</h1>
-        <p id="sum">На складе: 65 позиции</p>
-      </div>
+  <div class="personal_page">
+
+    <div id="personal_page_header">
+      <h3>Добавление товара</h3>
     </div>
 
-    <div class="list_products">
+    <form id="add_product_form" onsubmit="return false">
 
-      <div class="product_in_basket">
-        <a href="#" class="image_info_block">
-          <div class="image_product_in_basket">
-            <img src="../Static/Images/Product/9e813034df741c5b621228323bec7467.jpg">
-          </div>
-          <div class="info_about_product_basket">
-            <p id="product_name">Name of product</p>
-            <p id="price_product_basket">6000р</p>
-          </div>
-
-        </a>
-        <div class="description_size_bloc_basket">
-
-          <div class="description_product_basket">
-            <p id="description_in_basket">Описание: Брюки женские черного цвета на поясе</p>
-          </div>
-
-          <div class="size_product_basket">
-            <p id="size_in_basket">Размер: S </p>
-          </div>
+      <div class="field_change">
+        <div class="title">
+          1. Изменить Название товара:
         </div>
-        <div class="count_in_basket">
-          <p id="count_in_basket_p">В корзине: 5</p>
-          <input type="number" id="count_product_input" placeholder="Кол-во">
-          <button type="submit" id="change_count_product">Обновить</button>
+        <div class="element">
+          <input type="text" id="name_input" name="name" placeholder="Введите название" required>
+        </div>
+      </div>
+
+
+      <div class="field_change">
+        <div class="title">
+          2. Изменить описание:
+        </div>
+        <div class="element">
+          <input type="text" id="description_input" name="description" placeholder="Введите описание">
+        </div>
+
+
+      </div>
+
+      <div class="field_change">
+        <div class="title">
+          3. Укажите размер и кол-во:
+        </div>
+        <div class="size_element_block">
+          <div class="title">
+            XS
+            <input type="number" class="xs_input" id="sizeXS" name="XS" placeholder="Кол-во" required>
+          </div>
+
+          <div class="title">
+            S
+            <input type="number" class="s_input" id="sizeS" name="S" placeholder="Кол-во" required>
+          </div>
+
+          <div class="title">
+            M
+            <input type="number" class="m_input" id="sizeM" name="M" placeholder="Кол-во" required>
+          </div>
+
+          <div class="title">
+            L
+            <input type="number" class="l_input" id="sizeL" name="L" placeholder="Кол-во" required>
+          </div>
+
+          <div class="title">
+            XL
+            <input type="number" class="XL_input" id="sizeXL" name="XL" placeholder="Кол-во" required>
+          </div>
         </div>
 
       </div>
-    </div>
 
+      <div class="field_change">
+        <div class="title">
+          4. Изменить цену (если не хотите изменять, впишите "0"):
+        </div>
+        <div class="element">
+          <input type="number" min="0" id="price_input" name="price" placeholder="Введите цену">
+        </div>
+      </div>
+
+
+      <button type="submit" id="add_product_button" onclick="editProduct()">Изменить</button>
+    </form>
+
+    <div class="info_msg" id="info_msg_id"></div>
   </div>
 </div>
-</div>
 
-  </div>
+
+
 </div>
 </body>
-<script src = "/js/allProducts.js"></script>
+<script src="/js/edit_product.js"></script>
 </html>

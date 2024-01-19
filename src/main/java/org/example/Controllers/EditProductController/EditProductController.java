@@ -77,16 +77,10 @@ public class EditProductController {
         } else return null;
     }
 
-    @PostMapping("/delete_product_item/{name}")
-    public String deleteProduct(@PathVariable(name = "name") String nameProduct) {
-        return productService.deleteProduct(nameProduct);
-    }
+    @PostMapping("/delete_product_by_id/{productId}")
+    public String delete(@PathVariable(name = "productId") Long productId) {
+        return productService.deleteProduct(productId);
 
-    @PostMapping("/edit_product/{name}/")
-    public String editProduct(@PathVariable(name = "name") String name) {
-        if (productService.findByName(name) != null) {
-            return "rbreb";
-        } else return null;
     }
 
     @PostMapping("/edit_product_item")

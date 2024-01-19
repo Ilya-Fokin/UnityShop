@@ -1,7 +1,11 @@
 package org.example.Controllers.OrderControllers;
 
 import org.example.Domains.Basket;
+import org.example.Domains.Product;
 import org.example.Domains.User;
+import org.example.Repository.BasketRepo;
+import org.example.Repository.ProductRepo;
+import org.example.Repository.UserRepo;
 import org.example.Service.BasketService.BasketService;
 import org.example.Service.OrderService.OrderService;
 import org.example.Service.ProductServices.ProductService;
@@ -19,13 +23,13 @@ import java.util.List;
 @RestController
 public class OrderController {
     @Autowired
-    private ProductService productService;
+    private UserRepo userRepo;
 
     @Autowired
-    private ProductSizeService productSizeService;
+    private ProductRepo productRepo;
 
     @Autowired
-    private SizeService sizeService;
+    private BasketRepo basketRepo;
 
     @Autowired
     private UserService userService;
@@ -40,6 +44,7 @@ public class OrderController {
     public String createOrder() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findByUsername(auth.getName());
+        int sum = 0;
 
         if (user == null) {
             return "Необходима авторизация";
@@ -49,7 +54,13 @@ public class OrderController {
             if (baskets != null) {
                 for (Basket basket : baskets) {
                    orderService.createOrder(userId, basket.getId());
+                   Product product = productRepo.findById(basket.getProductId()).get();
+                   int price = product.getPrice();
+                   sum = sum + price;
                 }
+                user.setMoney(user.getMoney() - sum);
+                userRepo.save(user);
+
                 return "Заказ оформлен";
             } else return "Ваша корзина пуста";
         }

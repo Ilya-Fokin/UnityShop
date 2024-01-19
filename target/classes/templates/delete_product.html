@@ -80,14 +80,17 @@
 </div>
 
 <div class="containerMain">
-  <div id = "delete_product">
-    <h2>Удалить товар</h2>
-    <form id="delete_product_from" onsubmit="return false">
-      <p><input id="name_product" type="text" name="name" placeholder="Введите название товара" required></p>
-      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-      <button id="delete_product_button" onclick="deleteProduct()">Удалить</button>
-    </form>
-    <div class="info_msg" id="info_msg_id"></div>
+  <div class = "search_product_block">
+    <div class="header_search">
+      <h2>Поиск товара: </h2>
+      <form id="add_seller_form" onsubmit="return false">
+        <p><input id="search_input" type="text" name="name" placeholder="Введите название товара:" required></p>
+        <button id="search" onclick="searchProductForDelete()">Поиск</button>
+      </form>
+    </div>
+
+    <div class="content_zone">
+    </div>
 
   </div>
 </div>

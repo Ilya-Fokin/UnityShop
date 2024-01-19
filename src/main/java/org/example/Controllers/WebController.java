@@ -52,7 +52,6 @@ public class WebController {
         return "photo_album";
     }
 
-
     @GetMapping("/Mens/{category}")
     public String mensProductByCategory(@PathVariable(name = "category") String category) {
         return "mens_product_page";

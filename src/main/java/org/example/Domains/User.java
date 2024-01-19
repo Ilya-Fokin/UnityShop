@@ -44,6 +44,8 @@ public class User {
 
     public User() {}
 
+
+
     public User(String name, String username, String email, String password, String date) {
         this.name = name;
         this.username = username;

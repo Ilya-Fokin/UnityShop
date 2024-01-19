@@ -1,12 +1,13 @@
 package org.example.Service.ProductServices;
 
+import org.example.Domains.Basket;
+import org.example.Domains.Order;
 import org.example.Domains.Product;
 import org.example.Domains.ProductSize;
-import org.example.Repository.CategoryRepo;
-import org.example.Repository.ChapterRepo;
-import org.example.Repository.ProductRepo;
+import org.example.Repository.*;
 import org.example.Service.ProductSizeService.ProductSizeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,12 @@ public class ProductServiceImpl implements ProductService{
 
     @Autowired
     private ProductSizeService productSizeService;
+
+    @Autowired
+    private BasketRepo basketRepo;
+
+    @Autowired
+    private OrderRepo orderRepo;
 
      @Override
     public Boolean createProduct(String name, String description, String image, int price, String category, String chapter) {
@@ -33,7 +40,7 @@ public class ProductServiceImpl implements ProductService{
             productRepo.save(product);
             return true;
         }
-        return null;
+        return false;
     }
 
     @Override
@@ -54,19 +61,25 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public String deleteProduct(String name) {
-        if (checkProduct(name)) {
-            Product product = productRepo.findByName(name);
-            Long id = product.getId();
-
-            Iterable<ProductSize> productSizes = productSizeService.findAllByProductId(id);
-
-            for (ProductSize productSize : productSizes) {
-                productSizeService.deleteProductSize(productSize);
-            }
+    public String deleteProduct(Long id) {
+         Product product = productRepo.findById(id).get();
+        if (product != null) {
+            List<Basket> baskets = basketRepo.findAllByProductId(id);
+            if (baskets != null) {
+                for (Basket basket : baskets) {
+                    List<Order> orders = orderRepo.findAllByBasketId(basket.getId());
+                    if (orders != null) {
+                        for (Order order : orders) {
+                            orderRepo.delete(order);
+                        }
+                        basketRepo.delete(basket);
+                    } else
+                    basketRepo.delete(basket);
+                }
+                productRepo.delete(product);
+            } else
                 productRepo.delete(product);
                 return "Товар удален";
-
         } return "Товар не найден";
     }
 

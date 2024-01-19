@@ -8,7 +8,7 @@ public interface ProductService {
     Boolean createProduct(String name, String description, String image, int price, String category, String chapter);
     Boolean checkProduct(String name);
     Long getProductId(String name);
-    String deleteProduct(String name);
+    String deleteProduct(Long id);
     List<Product> getAllByCategoryAndChapter(String category, String chapter);
     Product findByCategoryAndChapter(String category, String chapter);
     Product getProductById(Long id);

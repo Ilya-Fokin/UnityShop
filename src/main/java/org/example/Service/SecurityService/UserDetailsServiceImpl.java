@@ -38,10 +38,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             } else return null;
     }
 
-    /*private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-        return roles.stream().map(r -> new SimpleGrantedAuthority(r.getRole())).collect(Collectors.toList());
-    }*/
-
     private Collection<SimpleGrantedAuthority> getAuthorities(Set<Role> roles) {
         return roles.stream().map(r -> new SimpleGrantedAuthority(r.getRole())).collect(Collectors.toList());
     }

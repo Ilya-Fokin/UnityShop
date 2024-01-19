@@ -35,10 +35,6 @@ public class UserServiceImpl implements UserService{
             return "Пользователь с таким логином уже существует";
         } else
 
-        /*if (checkUserByEmail(user.getEmail())) {
-            return "Пользователь с такой почтой уже зарегистрирован";
-        } else*/
-
         user.setActivationCode(UUID.randomUUID().toString());
 
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
